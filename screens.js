@@ -21,28 +21,34 @@ import {
       return(
         <ScreenContainer>
         <View style={styles.container}>
-        <Image source={worker} /> 
+        <View>
+
+       
         
-        {/* <TouchableOpacity
+        <TouchableOpacity
    style={{
        borderWidth:0,
        borderColor:'rgba(0,0,0,0.2)',
        alignItems:'center',
        justifyContent:'center',
-       width:400,
-       top: 40,
-       height:400,
-       backgroundColor:'#F4F3FE',
+       width:410,
+       top: 45,
+       height:410,
+       backgroundColor:'#EAEAFF',
        opacity: 5,
-       borderRadius:230,
+       borderRadius:130,
      }}
  >
 
-
-
+<Image 
+        style={{width: 500, 
+        top: 25,
+        height: 500
+        }}
+        source={worker} />
 
  </TouchableOpacity>
- <Image source={worker} />  */}
+ 
           
         
         
@@ -58,7 +64,7 @@ import {
            */}
           </View>
         
-        
+        </View>
     
 
     </ScreenContainer>
