@@ -9,25 +9,7 @@ export default StyleSheet.create({
       width: null,
     },  
 
-    but: {
-      elevation: 2,
-      backgroundColor: 'white',
-      borderRadius: 10,
-      paddingVertical: 5,
-      paddingHorizontal: 10,
-      color: '#F4F3FC',
-      alignItems: 'center',
-    },
-  
-    button: {
-      alignItems: 'center',
-      fontSize: 18,
-      color: 'white',
-      textAlign: 'center',
-      color: '#5D5AD9',
-      fontWeight: "500",
-      top: 15,
-    },
+    
   
     butt: {
       fontFamily: "Montserrat",
