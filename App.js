@@ -11,7 +11,7 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
-      <AuthStack.Screen name="LandingPage" component={LandingPage}/>
+      <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown:false }}/>
       {/* <AuthStack.Screen name="SignIn" component={SignIn}/> */}
       {/*<AuthStack.Screen name="CreateAccount" component={CreateAccount}/> */}
     </AuthStack.Navigator>

@@ -5,13 +5,17 @@ import {
     StyleSheet,
     View,
     Image,
+    Dimensions,
     TouchableOpacity,
     Button,
   
   } from 'react-native';
   import styles from '../../styles';
   import PrpleBtn from '../components/purplebutton';
-  import worker from '../../assets/images/worker.png';
+  import work from '../../assets/images/work.png';
+
+  const width = Dimensions.get('window').width
+  const height = Dimensions.get('window').height
 
   const ScreenContainer = ({ children }) => (
     <View style={styles.containers}>{children}</View>
@@ -25,32 +29,22 @@ import {
 
        
         
-        <TouchableOpacity
-   style={{
-       borderWidth:0,
-       borderColor:'rgba(0,0,0,0.2)',
-       alignItems:'center',
-       justifyContent:'center',
-       width:410,
-       top: 45,
-       height:410,
-       backgroundColor:'#EAEAFF',
-       opacity: 5,
-       borderRadius:130,
-     }}
- >
+     
 
 <Image 
-        style={{width: 500, 
-        top: 25,
-        height: 500
+        style={{width: width/1.25, 
+        top: height/7,
+        height: height/2
         }}
-        source={worker} />
+        source={work} />
+        </View>
 
- </TouchableOpacity>
+   
+
+
  
           
-        
+    
         
 {/*          
            <View style={styles.but}>
@@ -64,7 +58,7 @@ import {
            */}
           </View>
         
-        </View>
+  
     
 
     </ScreenContainer>
