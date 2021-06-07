@@ -9,9 +9,9 @@ import {
     Button,
   
   } from 'react-native';
-  import styles from './styles';
-  import PrpleBtn from './components/purplebutton';
-  import worker from './images/worker.png';
+  import styles from '../../styles';
+  import PrpleBtn from '../components/purplebutton';
+  import worker from '../../assets/images/worker.png';
 
   const ScreenContainer = ({ children }) => (
     <View style={styles.containers}>{children}</View>
