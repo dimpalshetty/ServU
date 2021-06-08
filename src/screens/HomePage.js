@@ -16,6 +16,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import PrpleBtn from '../components/purplebutton';
 import work from '../../assets/images/work.png';
 import Icon from "react-native-vector-icons/Ionicons";
+import Srch from "../components/Searchbar";
 
 
 
@@ -33,8 +34,10 @@ export const HomePage = ({ navigation }) => {
 
     return (
         <ScreenContainer>
-
+   
             <View style={styles.navbar}>
+
+               <View style={styles.textnav}>
                 <View style={styles.navtext}>
                     <Text style={styles.navigate}>Hi,</Text>
                     <Text style={styles.navigatesec}>Need some help today?</Text>
@@ -56,10 +59,31 @@ export const HomePage = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                 </View>
+                </View>
+                <View style={{ alignItems : 'center', height: height/12}}>
+                <Srch ></Srch>
+                </View>
+
+             
             </View>
 
+<View style={styles.grid}>
 
+    <View style={{ backgroundColor: 'black',}}>
+    <Text>Hi</Text>
 
+    </View>
+    <View style={{ backgroundColor: 'red'}}>
+    <Text>Hi</Text>
+
+    </View>
+    <View style={{ backgroundColor: 'black'}}>
+    <Text>Hi</Text>
+
+    </View>
+</View>
+
+            
 
         </ScreenContainer>
     );
@@ -75,11 +99,15 @@ const styles = StyleSheet.create({
         height: height / 2.5,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
-        flexDirection: 'row',
+        flexDirection: 'column',
         flex: 1/3,
     },
 
-    navigate: {
+    textnav: {
+        flexDirection:'row',
+    },
+
+    navigate: { 
         color: 'white',
         fontSize: 30,
         left: width / 12,
@@ -109,6 +137,10 @@ const styles = StyleSheet.create({
         height: height/5,
         width: width/4,
     },
+
+    grid: {
+        flexDirection:'row',
+    }
 
   
 
