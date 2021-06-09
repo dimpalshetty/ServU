@@ -1,21 +1,17 @@
 import React from "react";
 import {
     Text,
-    ImageBackground,
     StyleSheet,
     View,
     Image,
     Dimensions,
-    TouchableOpacity,
     ScrollView,
 
 } from 'react-native';
 import house from '../../assets/images/house.png'
-import InputText from '../../src/components/input';
 import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
-import color from "color";
 
 
 
@@ -162,7 +158,7 @@ export const SignUpPage = ({ navigation }) => {
                             }
                         />
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' title="Login" />
+                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
                 </View>
             </ScrollView>
         </ScreenContainer>
