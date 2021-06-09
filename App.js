@@ -7,7 +7,7 @@ import {LandingPage} from './src/screens/landing';
 import {HomePage} from './src/screens/HomePage';
 import {SignUpPage } from './src/screens/SignUp';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -30,11 +30,32 @@ const Tab = createBottomTabNavigator();
 
 function HomeStack() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = focused
+            ? 'home'
+            : 'home-outline';
+        } else if (route.name === 'Profile') {
+          iconName = focused ? 'book' : 'book-outline';
+        } else if (route.name === 'Hi') {
+          iconName = focused ? 'md-chatbubble' : 'chatbubble-outline';
+        } 
+
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+    })}
+    tabBarOptions={{
+      activeTintColor: '#583EF2',
+      inactiveTintColor: 'gray',
+    }}>
       <Tab.Screen name="Home" component={HomePage} />
       <Tab.Screen name="Profile" component={SignUpPage} />
-      <Tab.Screen name="hi" component={SignUpPage} />
-      <Tab.Screen name="hey" component={SignUpPage} />
+      <Tab.Screen name="Hi" component={LandingPage} />
+  
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
     </Tab.Navigator>
   );
