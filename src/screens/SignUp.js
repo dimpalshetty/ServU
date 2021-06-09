@@ -7,12 +7,17 @@ import {
     Image,
     Dimensions,
     TouchableOpacity,
-    Button,
-    TextInput,
+    ScrollView,
 
 } from 'react-native';
 import house from '../../assets/images/house.png'
 import InputText from '../../src/components/input';
+import SignUpButton from '../../src/components/button';
+import Icon from "react-native-vector-icons/Ionicons";
+import { Input } from 'react-native-elements';
+import color from "color";
+
+
 
 
 const width = Dimensions.get('window').width
@@ -36,7 +41,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 30,
         alignContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        color: '#6E6BE8'
     },
 
     Info: {
@@ -44,29 +50,24 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         alignItems: 'center',
         width: width / 1.35,
-        color: 'grey'
+        color: '#BBBBD2',
+        marginTop:5
 
     },
     body: {
         flexDirection: 'column',
-        borderColor: 'grey',
-        borderWidth: 1,
+        borderColor: '#BBBBD2',
+        borderWidth: 2,
         padding: 5,
         borderRadius: 15,
-        height: height / 2
+        alignItems: 'center',
+        justifyContent: "center",
+        flex: 1,
+        marginBottom: 50
 
     },
-    title: {
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: 16,
-        textAlign: 'center',
-    },
-    PassInput: {
-        borderBottomWidth: 1,
-        width: width / 1.35,
-    },
-    password: {
+
+    input: {
         width: width / 1.25,
         alignItems: 'flex-start',
         justifyContent: "center",
@@ -82,37 +83,88 @@ export const SignUpPage = ({ navigation }) => {
 
     return (
         <ScreenContainer>
-            <View style={styles.Header}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+            >
+                <View style={styles.Header}>
 
-                <Image
-                    style={{
-                        width: width / 3,
-                        height: height / 6,
-                        resizeMode: 'contain'
-                    }}
-                    source={house} />
-                <Text style={styles.SignUp}>Sign up</Text>
-                <Text style={styles.Info}>Please enter the details to sign up and create an account.</Text>
+                    <Image
+                        style={{
+                            width: width / 3,
+                            height: height / 6,
+                            resizeMode: 'contain'
+                        }}
+                        source={house} />
+                    <Text style={styles.SignUp}>Sign Up</Text>
+                    <Text style={styles.Info}>Please enter the details to sign up and create an account.</Text>
 
-            </View>
-            <View style={styles.body}>
-                <InputText text='Your Name'
-                    placeholder='Your name here'
-                />
-                <InputText text='Phone Number'
-                    placeholder='Your phone number here'
-
-                />
-                <View style={styles.password}>
-                    <Text style={styles.title}>Password</Text>
-                    <TextInput secureTextEntry={true} placeholder='Retype your Password here' style={styles.PassInput} />
                 </View>
-                <View style={styles.password}>
-                    <Text style={styles.title}>Confirm Password</Text>
-                    <TextInput secureTextEntry={true} placeholder='Retype your Password here' style={styles.PassInput} />
-                </View>
-            </View>
+                <View style={styles.body}>
+                    <View style={styles.input}>
+                        <Input
+                            label="Name"
+                            placeholder="Your name here"
+                            labelStyle={{ 'color': '#1F1F39' }}
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+                            leftIcon={
+                                <Icon name="person-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
 
+                                ></Icon>
+                            }
+                        />
+                        <Input
+                            label="Phone"
+                            labelStyle={{ 'color': '#1F1F39' }}
+                            placeholder="Your phone number here"
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+
+                            leftIcon={
+                                <Icon name="phone-portrait-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
+
+                        <Input
+                            label="Password"
+                            labelStyle={{ 'color': '#1F1F39' }}
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+
+                            placeholder="Your password here"
+                            secureTextEntry={true}
+                            leftIcon={
+                                <Icon name="lock-closed-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
+
+                        <Input
+                            label="Confirm Password"
+                            labelStyle={{ 'color': '#1F1F39' }}
+
+                            placeholder="Retype password here"
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+                            secureTextEntry={true}
+                            
+                            leftIcon={
+                                <Icon name="lock-closed-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
+                    </View>
+                    <SignUpButton text='Sign Up' color='#FFFF' title="Login" />
+                </View>
+            </ScrollView>
         </ScreenContainer>
     );
 };
