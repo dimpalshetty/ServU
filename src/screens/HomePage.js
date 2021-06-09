@@ -24,6 +24,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Srch from "../components/Searchbar";
 import Gridbtn from '../components/gridbuttons';
 import Slider from '../components/slider';
+import Tests from '../components/testimonialbox';
 
 
 const imageW = width * 0.7;
@@ -155,15 +156,11 @@ export const HomePage = ({ navigation }) => {
 
 <Text style={styles.texttest}>TESTIMONIALS</Text>
 
-<View style={styles.testbox}>
-    <Text>2st</Text>
-</View>
-<View style={styles.testbox}>
-    <Text>2st</Text>
-</View>
-<View style={styles.testbox}>
-    <Text>2st</Text>
-</View>
+<Tests text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more." texxt="-DIMPAL SHETTY"></Tests>
+<Tests text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more." texxt="-DIMPAL SHETTY"></Tests>
+<Tests text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more." texxt="-DIMPAL SHETTY"></Tests>
+
+
 
 </View>  
            
@@ -202,6 +199,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         borderTopRightRadius: 30,
+      
     },
 
     testimonial:{
