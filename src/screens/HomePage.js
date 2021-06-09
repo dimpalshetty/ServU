@@ -8,6 +8,11 @@ import {
     Dimensions,
     TouchableOpacity,
     Button,
+    StatusBar,
+    FlatList,
+    Animated,
+    ScrollView,
+    ScrollViewBase,
 
 } from 'react-native';
 
@@ -18,6 +23,11 @@ import work from '../../assets/images/work.png';
 import Icon from "react-native-vector-icons/Ionicons";
 import Srch from "../components/Searchbar";
 import Gridbtn from '../components/gridbuttons';
+import Slider from '../components/slider';
+
+
+const imageW = width * 0.7;
+const imageH = imageW * 1.54;
 
 
 
@@ -34,52 +44,59 @@ const ScreenContainer = ({ children }) => (
 export const HomePage = ({ navigation }) => {
 
     return (
-        <ScreenContainer>
 
-            <View style={styles.navbar}>
+        <ScrollView alwaysBounceVertical={true}>
+            <ScreenContainer>
 
-                <View style={styles.textnav}>
-                    <View style={styles.navtext}>
-                        <Text style={styles.navigate}>Hi,</Text>
-                        <Text style={styles.navigatesec}>Need some help today?</Text>
 
+                <View style={styles.navbar}>
+
+                    <View style={styles.textnav}>
+                        <View style={styles.navtext}>
+                            <Text style={styles.navigate}>Hi,</Text>
+                            <Text style={styles.navigatesec}>Need some help today?</Text>
+
+                        </View>
+                        <View style={styles.profile}>
+                            <TouchableOpacity>
+
+                                <Icon
+                                    name='md-person-circle-outline'
+                                    size="small"
+                                    style={{
+                                        color: 'white',
+                                        fontSize: 50,
+
+
+
+                                    }}
+                                />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.profile}>
-                        <TouchableOpacity>
-
-                            <Icon
-                                name='md-person-circle-outline'
-                                size="small"
-                                style={{
-                                    color: 'white',
-                                    fontSize: 50,
-
-
-
-                                }}
-                            />
-                        </TouchableOpacity>
+                    <View style={{ alignItems: 'center', height: height / 12 }}>
+                        <Srch ></Srch>
                     </View>
+
+
                 </View>
-                <View style={{ alignItems: 'center', height: height / 12 }}>
-                    <Srch ></Srch>
-                </View>
+
+                                <View style={{flexDirection: 'column'}}>
 
 
-            </View>
 
-            <View style={styles.grid}>
-               
+                <View style={styles.grid}>
+
                     <View style={styles.all}>
 
-                        <Gridbtn text="Carpenter" icon="hammer-outline"  />
+                        <Gridbtn text="Carpenter" icon="hammer-outline" />
 
-                    
 
-                        <Gridbtn text="Cleaner" icon="md-flower"/>
 
-                    
-                    
+                        <Gridbtn text="Cleaner" icon="md-flower" />
+
+
+
 
                         <Gridbtn text="Mechanic" icon="md-build" />
 
@@ -88,12 +105,12 @@ export const HomePage = ({ navigation }) => {
 
                         <Gridbtn text="Cook" icon="md-fast-food" />
 
-                    
+
 
                         <Gridbtn text="Plumber" icon="md-water" />
 
-                    
-                    
+
+
 
                         <Gridbtn text="More" icon="md-color-wand" />
 
@@ -102,16 +119,64 @@ export const HomePage = ({ navigation }) => {
 
 
 
-            
 
 
 
 
-            </View>
+
+                </View>
+
+                <View style={{height: height/2, width:width}}>
+
+                    <View style={{
+                        backgroundColor: 'black',
+                        flexDirection: 'row',
+                        top: height / 10,
+                        height: height / 3,
+
+                        left: width / 25,
+                        marginRight: 30,
+                        borderRadius: 10,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+
+
+                        <Slider></Slider>
 
 
 
-        </ScreenContainer>
+                    </View>
+
+
+               </View>  
+
+               <View style={styles.testimonial}> 
+
+<Text style={styles.texttest}>TESTIMONIALS</Text>
+
+<View style={styles.testbox}>
+    <Text>2st</Text>
+</View>
+<View style={styles.testbox}>
+    <Text>2st</Text>
+</View>
+<View style={styles.testbox}>
+    <Text>2st</Text>
+</View>
+
+</View>  
+           
+             
+</View>
+
+            </ScreenContainer>
+
+
+
+        </ScrollView>
+
+
     );
 
 };
@@ -122,11 +187,36 @@ const styles = StyleSheet.create({
 
     navbar: {
         backgroundColor: '#583EF2',
-        height: height / 2.5,
+        height: height / 3,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         flexDirection: 'column',
         flex: 1 / 3,
+    },
+
+    testbox: {
+        backgroundColor: '#b09cc8',
+        width: width/1.1,
+        height: height/4,
+        marginBottom: 10,
+        borderBottomLeftRadius: 30,
+        borderBottomRightRadius: 30,
+        borderTopRightRadius: 30,
+    },
+
+    testimonial:{
+       
+        alignItems: 'center',
+alignContent: 'space-between',
+flexDirection: 'column',
+    },
+
+
+    texttest: {
+
+        fontSize: 30,
+        color: '#583EF2',
+        fontWeight: "700",
     },
     all: {
 
@@ -157,6 +247,10 @@ const styles = StyleSheet.create({
         top: height / 17,
     },
 
+    contentContainer: {
+        paddingVertical: 20
+    },
+
     navigatesec: {
         color: 'white',
         left: width / 12,
@@ -173,7 +267,7 @@ const styles = StyleSheet.create({
 
     },
 
-    
+
     but: {
 
         backgroundColor: '#EAEAFF',
@@ -208,8 +302,8 @@ const styles = StyleSheet.create({
     grid: {
         top: height / 17,
         flexDirection: 'column',
-        flex: 2/3,
-        
+        flex: 2 / 3,
+
     }
 
 
