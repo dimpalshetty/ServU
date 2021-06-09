@@ -2,11 +2,10 @@ import React from 'react'
 import { Text, View,  Dimensions, StyleSheet,TouchableOpacity } from 'react-native'
 
 
-const width = Dimensions.get('window').width
 
 
-const Button = ({ text,color }) => {
-  return (<TouchableOpacity style={[styles.btnContainerStyle]}>
+const Button = ({ text,color,bgcolor ,width}) => {
+  return (<TouchableOpacity style={[styles.btnContainerStyle,bgcolor && {backgroundColor:bgcolor},width && {width}]}>
       <View >
         <Text style={[styles.btnTextStyle,color && {color}]}> {text} </Text>
       </View>
@@ -17,7 +16,6 @@ const Button = ({ text,color }) => {
 
 const styles = StyleSheet.create({
   btnContainerStyle: {
-      width:width/1.35,
       backgroundColor :'#583ef2',
     borderRadius:15,
     height:56,

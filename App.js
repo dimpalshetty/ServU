@@ -16,10 +16,11 @@ export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
 
-    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
-    <AuthStack.Screen name="SignupPage" component={SignUpPage} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown:false }}/>
 
-      <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="SignupPage" component={SignUpPage} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
+
 
     </AuthStack.Navigator>
   </NavigationContainer>
@@ -41,7 +42,7 @@ function HomeStack() {
         } else if (route.name === 'Profile') {
           iconName = focused ? 'book' : 'book-outline';
         } else if (route.name === 'Hi') {
-          iconName = focused ? 'md-chatbubble' : 'chatbubble-outline';
+          iconName = focused ? 'chatbubble' : 'chatbubble-outline';
         } 
 
         // You can return any component that you like here!
