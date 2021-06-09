@@ -30,7 +30,6 @@ export default class Srch extends React.Component {
     return (
       <SearchBar inputStyle={{backgroundColor: 'white'}}
       containerStyle={{backgroundColor: 'white', borderWidth: 0, borderColor:'white', borderBottomLeftRadius:15,  borderBottomRightRadius:15, borderTopRightRadius:15, width: width/1.1, height:height/14 }}
-      placeholderTextColor={'#g5g5g5'}
       inputContainerStyle= {{backgroundColor: 'white', borderColor:'white', height: height/20}}
       placeholder={'Find it here'}
       lighttheme= {true}
