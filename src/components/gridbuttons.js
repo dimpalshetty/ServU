@@ -22,7 +22,7 @@ return(
                                 size="small"
                                 style={{
                                     fontSize: 40,
-                            color: '#583EF2',
+                            color: '#636BE8',
                         }}
                             />
           <Text style={styles.taskdes}> {text} </Text>
