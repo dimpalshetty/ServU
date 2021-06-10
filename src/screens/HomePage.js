@@ -27,6 +27,7 @@ import Slider from '../components/slider';
 import Tests from '../components/testimonialbox';
 
 
+
 const imageW = width * 0.7;
 const imageH = imageW * 1.54;
 
@@ -50,7 +51,8 @@ export const HomePage = ({ navigation }) => {
             <ScreenContainer>
 
 
-                <View style={styles.navbar}>
+               
+               <View style={styles.navbar}>
 
                     <View style={styles.textnav}>
                         <View style={styles.navtext}>
@@ -80,7 +82,7 @@ export const HomePage = ({ navigation }) => {
                     </View>
 
 
-                </View>
+                    </View>
 
                                 <View style={{flexDirection: 'column'}}>
 
@@ -183,12 +185,12 @@ export const HomePage = ({ navigation }) => {
 const styles = StyleSheet.create({
 
     navbar: {
-        backgroundColor: '#583EF2',
+        backgroundColor: '#6E6BE8',
         height: height / 3,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40,
         flexDirection: 'column',
-        flex: 1 / 3,
+    
     },
 
     testbox: {
@@ -236,6 +238,7 @@ flexDirection: 'column',
 
     textnav: {
         flexDirection: 'row',
+
     },
 
     navigate: {
