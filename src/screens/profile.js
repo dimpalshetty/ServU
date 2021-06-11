@@ -29,7 +29,8 @@ const ScreenContainer = ({ children }) => (
 export const Profile = ({ navigation }) => {
 
     return (
-
+<ScrollView>
+        
         <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' }}>
 
 
@@ -90,7 +91,7 @@ export const Profile = ({ navigation }) => {
                         label="Name"
                         placeholder="Your name here"
                         labelStyle={{ 'color': '#1F1F39', padding: 5, }}
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, }}
+                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25,marginTop: 5, }}
                         leftIcon={
                             <Icon name="person-outline"
                                 size={18}
@@ -101,9 +102,9 @@ export const Profile = ({ navigation }) => {
                     />
                     <Input
                         label="Phone"
-                        labelStyle={{ 'color': '#1F1F39' }}
+                        labelStyle={{ 'color': '#1F1F39', paddingVertical: 5, }}
                         placeholder="Your phone number here"
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, }}
+                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2,marginTop: 5,}}
 
                         leftIcon={
                             <Icon name="phone-portrait-outline"
@@ -117,8 +118,8 @@ export const Profile = ({ navigation }) => {
 
                         label="Email"
                         placeholder="Your Email here"
-                        labelStyle={{ 'color': '#1F1F39'}}
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, }}
+                        labelStyle={{ 'color': '#1F1F39', paddingVertical: 5,}}
+                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2, marginTop: 5,}}
                         leftIcon={
                             <Icon name="mail-outline"
                                 size={18}
@@ -130,10 +131,10 @@ export const Profile = ({ navigation }) => {
 
 <Input
                             label="Change Password"
-                            labelStyle={{ 'color': '#1F1F39' ,}}
+                            labelStyle={{ 'color': '#1F1F39' , paddingVertical: 5,}}
 
                             placeholder="Your Current Password Here"
-                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, }}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2, marginTop: 5,}}
                             secureTextEntry={true}
                             
                             leftIcon={
@@ -146,15 +147,16 @@ export const Profile = ({ navigation }) => {
                         />
 
                 </View>
-                <View style={{alignItems: 'center', top: -20 }}>
+                <View style={{alignItems: 'center', top: -15 }}>
                     <SignUpButton text='Confirm' color='#583EF2' bgcolor='#EAEAFF' width={width/1.1} /> 
                 </View>
-                <View style={{alignItems: 'center', top: -10}}>
+                <View style={{alignItems: 'center', top: 20}}>
                     <SignUpButton text='SAVE' color='#FFFF' bgcolor='#583ef2' width={width/1.1} /> 
                 </View>
             </View>
 
         </ScreenContainer>
+        </ScrollView>
 
 
     );

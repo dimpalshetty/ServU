@@ -24,7 +24,8 @@ return(
         width: 140,
         borderBottomRightRadius: 50,
         borderBottomLeftRadius: 50,
-        borderTopRightRadius: 50,}}source={dimps}/>
+        borderTopRightRadius: 50,
+        borderColor: 'black', borderWidth:3,}}source={dimps}/>
 
 
 
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         top: -70,
         right: width / 2,
         left: width / 3,
-        backgroundColor: 'black',
+        backgroundColor: '#583ef2',
         justifyContent: 'center',
         alignItems: 'center',
     },
