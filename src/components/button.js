@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     marginVertical:10
   },
   btnTextStyle: {
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: "700",
     textTransform: 'uppercase',
     textAlign: 'center',
   }
