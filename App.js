@@ -17,9 +17,10 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
+  
+    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
     <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown:false }}/>
     <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown:false }}/>
-    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
     
 
     <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown:false }}/>
@@ -45,7 +46,7 @@ function HomeStack() {
           iconName = focused
             ? 'home'
             : 'home-outline';
-        } else if (route.name === 'Profile') {
+        } else if (route.name === 'Booking') {
           iconName = focused ? 'book' : 'book-outline';
         } else if (route.name === 'Hi') {
           iconName = focused ? 'chatbubble' : 'chatbubble-outline';
@@ -60,7 +61,7 @@ function HomeStack() {
       inactiveTintColor: 'gray',
     }}>
       <Tab.Screen name="Home" component={HomePage} />
-      <Tab.Screen name="Profile" component={SignUpPage} />
+      <Tab.Screen name="Booking" component={Booking} />
       <Tab.Screen name="Hi" component={LandingPage} />
   
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
