@@ -41,7 +41,7 @@ export const Profile = ({ navigation }) => {
 
 
 
-                    <TouchableOpacity style={{ padding: 20, paddingTop: 20, flex: 1 / 3 }}>
+                    <TouchableOpacity style={{ padding: 20, paddingTop: 20, flex: 1 / 3 }} onPress={()=> navigation.goBack() }>
 
                         <Icon
                             name='chevron-back-circle-outline'

@@ -61,7 +61,7 @@ export const HomePage = ({ navigation }) => {
 
                         </View>
                         <View style={styles.profile}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={()=>navigation.push("Profile")}>
 
                                 <Icon
                                     name='md-person-circle-outline'
