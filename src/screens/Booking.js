@@ -11,7 +11,7 @@ import {
 import house from '../../assets/images/house.png';
 import dimps from '../../assets/images/dimps.jpg';
 import SignUpButton from '../../src/components/button';
-import Bookbox from '../../src/components/bookbox';
+import Bookbox from '../../src/components/Bookbox';
 import ProfilePic from '../../src/components/ProfilePic';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
@@ -70,7 +70,7 @@ export const Booking = ({ navigation }) => {
                 </View>
 
                 <View style={{flexDirection: 'column'}}>
-                <Bookbox imgUrl ={require('../../assets/images/dimps.jpg')} text='hiiiii' />
+                <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty' text1='Cleaning'/>
 
                 </View>
 

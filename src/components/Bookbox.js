@@ -3,52 +3,82 @@ import {
   Text, Image,
   StyleSheet,
   View,
+  Dimensions,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import dimps from '../../assets/images/dimps.jpg';
 
-
-const Bookbox= ({image, text}) => {
-return(
-  
-  <TouchableOpacity>
-  <View style={{flexDirection: 'row'}}>
-  <Image style={{height: 25, width: 50,}} source= {image.Image}  />
-  <Text> {text} </Text>
-
-  
+const width = Dimensions.get('window').width
+const height = Dimensions.get('window').height
 
 
+const Bookbox = ({ image, text, text1 }) => {
+  return (
+    
+    <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <TouchableOpacity style={styles.bookno}>
+        <View style={styles.boxbox}>
+          <Image style={{ height: 75, width: 75, marginLeft: 5,  marginTop: 10, marginBottom: 10, borderRadius: 20, }} source={image} />
+          <Text style={styles.booking}> You Have Booked {text} For The Task Of {text1}  </Text>
 
-  </View>
-</TouchableOpacity>
-        );
+
+
+
+
+        </View>
+      </TouchableOpacity>
+    </View>
+    
+  );
 }
 
 
 const styles = StyleSheet.create({
 
-  
-    button: {
-      alignItems: 'center',
-      fontSize: 18,
-      textAlign: 'center',
-      color: 'red',
-      fontWeight: "500",
-      top: 15,
-    },
+  bookno: {
 
-    login:{
-      color: '#46369F',
-      fontWeight: "800",
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: 20,
+    width: width / 1.1,
+    height: height / 7,
+    justifyContent: 'space-between',
+
+    alignContent: 'center',
+    top: 10,
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    backgroundColor: '#78789D',
+
+
+
+  },
+
+  boxbox: {
+    flexDirection: 'row',
+    marginRight: 20,
+    width: width / 1.1,
+    height: height / 7,
+    alignItems: 'center',
+  
+
+
+
+  },
+  booking: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: "300",
+    flexShrink: 1,
+    alignContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 8,
     }
- 
-  
 
-  
+
+
+
 });
 
 export default Bookbox;
