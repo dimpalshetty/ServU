@@ -7,6 +7,7 @@ import {LandingPage} from './src/screens/landing';
 import {HomePage} from './src/screens/HomePage';
 import {Profile} from './src/screens/profile';
 import {SignUpPage } from './src/screens/SignUp';
+import {Booking } from './src/screens/Booking';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -16,6 +17,7 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
+    <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown:false }}/>
     <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown:false }}/>
     <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
     
