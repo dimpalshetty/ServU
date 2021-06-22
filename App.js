@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {LandingPage} from './src/screens/landing';
 import {HomePage} from './src/screens/HomePage';
+import {BookingDetails} from './src/screens/BookingDetails';
 import {Profile} from './src/screens/profile';
 import {SignUpPage } from './src/screens/SignUp';
 import {Booking } from './src/screens/Booking';
@@ -17,9 +18,13 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
-  
+    
     <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
     <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="BookingDetails" component={BookingDetails} options={{ headerShown:false }}/>
+    
+    
+   
     <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown:false }}/>
     
 

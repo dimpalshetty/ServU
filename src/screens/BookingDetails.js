@@ -28,32 +28,27 @@ const ScreenContainer = ({ children }) => (
     <View style={styles.container}>{children}</View>
 );
 
-
-
-export const Booking = ({ navigation }) => {
-    
-    
+export const BookingDetails = ({ route, navigation }) => {
+   const {Id} = route.params;
 
     return (
-<ScrollView>
-        
-        <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' }}>
+        <ScrollView>
 
+            <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' }}>
 
-            <View style={{ flexDirection: 'column' }}>
 
                 <View style={styless.navbarr}>
 
 
 
 
-                    <TouchableOpacity style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }} onPress={()=>navigation.goBack() }>
+                    <TouchableOpacity style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }} onPress={() => navigation.goBack()}>
 
                         <Icon
                             name='chevron-back-circle-outline'
                             size="small"
                             style={{
-                                color: 'white',
+                                color: '#46369F',
                                 fontSize: 50,
 
 
@@ -64,8 +59,8 @@ export const Booking = ({ navigation }) => {
 
 
 
-                    <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 25, }}>
-                        <Text style={{ color: 'white', fontSize: 30, }}>Bookings</Text>
+                    <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 30, }}>
+                        <Text style={styless.booking}>Post id is: {Id } </Text>
 
 
                     </View>
@@ -73,28 +68,8 @@ export const Booking = ({ navigation }) => {
 
                 </View>
 
-                <View style={{flexDirection: 'column'}}>
-                <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty  ' text1='Cleaning' id='#123455' />
 
-                </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </View>
-
-          
-
-        </ScreenContainer>
+            </ScreenContainer>
         </ScrollView>
 
 
@@ -104,14 +79,14 @@ export const Booking = ({ navigation }) => {
 
 const styless = StyleSheet.create({
 
+
     navbarr: {
-        backgroundColor: '#6E6BE8',
-        height: height / 5,
-        borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
+     
         flexDirection: 'row',
         alignContent: 'center',
         position: 'relative',
+        paddingTop: 5,
+      
 
 
 
@@ -119,10 +94,16 @@ const styless = StyleSheet.create({
 
     },
 
-    
+    booking: {
+        color: '#46369F',
+         fontSize: 20, 
+         alignContent: 'center',
+         justifyContent: 'center',
+         left: width/50, 
 
+    }, 
 
 });
 
 
-export default Booking
+export default BookingDetails
