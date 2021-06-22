@@ -8,15 +8,12 @@ import {
     ScrollView,
 
 } from 'react-native';
-import house from '../../assets/images/house.png';
-import dimps from '../../assets/images/dimps.jpg';
-import SignUpButton from '../../src/components/button';
-import Bookbox from '../../src/components/Bookbox';
-import ProfilePic from '../../src/components/ProfilePic';
+
 import Icon from "react-native-vector-icons/Ionicons";
-import { Input } from 'react-native-elements';
 import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { RFPercentage } from "react-native-responsive-fontsize";
+import { Header } from "react-native-elements";
 
 
 
@@ -29,44 +26,33 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const BookingDetails = ({ route, navigation }) => {
-   const {id} = route.params;
+    const { id } = route.params;
 
     return (
         <ScrollView>
 
             <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' }}>
 
+                <Header
+                    leftComponent={  <Icon
+                        name="chevron-back-circle-outline"
+                        size="small"
+                        onPress={()=>navigation.goBack()}
+                        style={{
+                            color: '#46369F',
 
-                <View style={styless.navbarr}>
-
-
-
-
-                    <TouchableOpacity style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }} onPress={() => navigation.goBack()}>
-
-                        <Icon
-                            name='chevron-back-circle-outline'
-                            size="small"
-                            style={{
-                                color: '#46369F',
-                                fontSize: 50,
+                            fontSize: RFPercentage(6),
 
 
 
-                            }}
-                        />
-                    </TouchableOpacity>
+                        }}
+                    />  }
+                    centerComponent={<Text>{id}</Text>}
+                   
+                />
 
 
 
-                    <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 30, }}>
-                        <Text style={styless.booking}>id is: {id } </Text>
-
-
-                    </View>
-
-
-                </View>
 
 
             </ScreenContainer>
@@ -81,12 +67,13 @@ const styless = StyleSheet.create({
 
 
     navbarr: {
-     
+
         flexDirection: 'row',
         alignContent: 'center',
+        justifyContent: 'space-evenly',
         position: 'relative',
         paddingTop: 5,
-      
+
 
 
 
@@ -96,12 +83,13 @@ const styless = StyleSheet.create({
 
     booking: {
         color: '#46369F',
-         fontSize: 20, 
-         alignContent: 'center',
-         justifyContent: 'center',
-         left: width/50, 
+        alignContent: 'center',
+        justifyContent: 'center',
+        fontWeight: '800',
+        fontSize: 18,
+        paddingRight: 20,
 
-    }, 
+    },
 
 });
 
