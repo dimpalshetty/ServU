@@ -16,13 +16,13 @@ const height = Dimensions.get('window').height
 
 const Bookbox = ({ image, text, text1, id }) => {
   
-const nav = useNavigation();
+  
 
-
+  
   return (
     
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <TouchableOpacity style={styles.bookno} onPress={() => nav.navigate('BookingDetails', { })} >
+      <TouchableOpacity style={styles.bookno} >
         <View style={styles.boxbox}>
           <Image style={{ height: 75, width: 75, marginLeft: 5,  marginTop: 10, marginBottom: 10, borderRadius: 20, }} source={image} />
           <Text style={styles.booking}> You Have Booked {text} For The Task Of {text1}. The Booking ID is {id} </Text>
