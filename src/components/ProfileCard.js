@@ -20,11 +20,14 @@ const ProfileCard = ({ name }) => {
     return (
 
 
-        <Card>
+        <Card containerStyle={{ borderBottomRightRadius: 50,
+            borderBottomLeftRadius: 50,
+            borderTopRightRadius: 50,}}>
             {
-                <View >
-
-                    <ProfilePic />
+                <View style={{ flex: 1, flexDirection: 'row' }}>
+                        <View style={{marginRight:'5%'}}>
+                        <ProfilePic/>
+                        </View>
                     <Text style={styles.name}>{name}</Text>
                 </View>
             }

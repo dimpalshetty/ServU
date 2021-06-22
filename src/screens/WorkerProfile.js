@@ -37,21 +37,23 @@ export const WorkerProfile = ({ route }) => {
                 backgroundColor: 'white',
                 height: '15%'
             }}
-                leftComponent={<Icon
-                    name='chevron-back-circle-outline'
-                    size="small"
-                    style={{
-                        color: '#B8B8D2',
-                        fontSize: RFPercentage(6),
+                leftComponent={
+                    <TouchableOpacity>
+                        <Icon
+                            name='chevron-back-circle-outline'
+                            size="small"
+                            style={{
+                                color: '#B8B8D2',
+                                fontSize: RFPercentage(6),
 
-                    }}
-                />}
-                centerComponent={{ text: 'Profile', style: { color: '#46369F', fontSize: RFPercentage(4),fontWeight:'bold' } }}
-            />
+                            }}
+                        />
+                    </TouchableOpacity>}
+                centerComponent={{ text: 'Profile', style: { color: '#46369F', fontSize: RFPercentage(4), fontWeight: 'bold' } }} />
             <ScrollView
                 showsVerticalScrollIndicator={false}>
-                <ProfileCard name={name}/>
-         </ScrollView>
+                <ProfileCard name={name} />
+            </ScrollView>
         </View>
     );
 };
