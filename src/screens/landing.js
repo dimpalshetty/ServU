@@ -1,18 +1,14 @@
 import React from "react";
 import {
   Text,
-  ImageBackground,
   StyleSheet,
   View,
   Image,
   Dimensions,
-  TouchableOpacity,
-  Button,
 
 } from 'react-native';
 
 
-import PrpleBtn from '../components/purplebutton';
 import work from '../../assets/images/work.png';
 import CustomButton from '../../src/components/button';
 

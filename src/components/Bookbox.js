@@ -4,10 +4,8 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import dimps from '../../assets/images/dimps.jpg';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
