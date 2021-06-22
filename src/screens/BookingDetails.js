@@ -60,7 +60,7 @@ export const BookingDetails = ({ route, navigation }) => {
 
 
                     <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 30, }}>
-                        <Text style={styless.booking}>Post id is: {Id } </Text>
+                        <Text style={styless.booking}>id is: {Id } </Text>
 
 
                     </View>
