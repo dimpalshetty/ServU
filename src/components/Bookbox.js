@@ -6,11 +6,11 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-<<<<<<< HEAD
-=======
-import dimps from '../../assets/images/dimps.jpg';
+
 import { useNavigation } from '@react-navigation/native';
->>>>>>> f9b94c51c6b5bbb8a17467a5489483053b364c54
+
+
+
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height

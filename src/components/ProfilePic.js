@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import quote from '../../assets/images/quote.png';
 import house from '../../assets/images/house.png';
-import dimps from '../../assets/images/dimps.jpg';
+import profile from '../../assets/images/profile.jpg';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -25,7 +25,7 @@ return(
         borderBottomRightRadius: 50,
         borderBottomLeftRadius: 50,
         borderTopRightRadius: 50,
-        borderColor: 'black', borderWidth:1,}}source={dimps}/>
+        borderColor: 'black', borderWidth:0,}}source={profile}/>
 
 
 

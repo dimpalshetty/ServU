@@ -37,12 +37,9 @@ export default () => (
     
     
    
-    <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown:false }}/>
     
 
-    <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown:false }}/>
 
-    <AuthStack.Screen name="SignupPage" component={SignUpPage} options={{ headerShown:false }}/>
    
 
 

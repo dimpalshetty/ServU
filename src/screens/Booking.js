@@ -3,18 +3,13 @@ import {
     Text,
     StyleSheet,
     View,
-    Image,
     Dimensions,
     ScrollView,
 
 } from 'react-native';
-import house from '../../assets/images/house.png';
-import dimps from '../../assets/images/dimps.jpg';
-import SignUpButton from '../../src/components/button';
+
 import Bookbox from '../../src/components/Bookbox';
-import ProfilePic from '../../src/components/ProfilePic';
 import Icon from "react-native-vector-icons/Ionicons";
-import { Input } from 'react-native-elements';
 import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -74,6 +69,7 @@ export const Booking = ({ navigation, props }) => {
                 </View>
 
                 <View style={{flexDirection: 'column'}}>
+
                 <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty  ' text1='Cleaning' id='#123455' />
 
                 </View>
