@@ -40,18 +40,16 @@ export const BookingDetails = ({ route, navigation }) => {
 
 
 
-            <ProgressSteps marginBottom={10} borderWidth="2" completedProgressBarColor="#F37193" completedStepIconColor="#F37193" nextBtnDisabled={true} nextBtnDisabled={true} isComplete={true} labelFontSize="12"  >
-                <ProgressStep marginBottom="10" progressBarColor='#F37193' removeBtnRow={true} label="Booked">
+            <ProgressSteps marginBottom={10} borderWidth='2' completedProgressBarColor='#F37193' completedStepIconColor='#F37193' nextBtnDisabled={true} nextBtnDisabled={true} isComplete={true} labelFontSize='12'  >
+                <ProgressStep marginBottom='10' progressBarColor='#F37193' removeBtnRow={true} label='Booked'>
                     <View style={{ alignItems: 'center' }}>
-                        {/* <Text>This is the content within step 1!</Text> */}
                     </View>
                 </ProgressStep>
-                <ProgressStep label="Confirmed">
+                <ProgressStep label='Confirmed'>
                     <View style={{ alignItems: 'center' }}>
-                        {/* <Text>This is the content within step 2!</Text> */}
                     </View>
                 </ProgressStep>
-                <ProgressStep label="Completed">
+                <ProgressStep label='Completed'>
                     <View style={{ alignItems: 'center' }}>
                         <Text>This is the content within step 3!</Text>
                     </View>

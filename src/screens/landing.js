@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 90,
 
-    fontFamily: 'Futura',
     color: '#46369F',
 
 

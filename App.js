@@ -24,9 +24,10 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
+    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
+
     <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
       <AuthStack.Screen name="WorkerProfile" component={WorkerProfile} options={{ headerShown: false }} />
-      <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
       <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown: false }} />
       <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
