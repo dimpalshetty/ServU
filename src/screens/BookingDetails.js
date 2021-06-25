@@ -31,51 +31,91 @@ export const BookingDetails = ({ route, navigation }) => {
 
     return (
 
-        <View style={{flex: 1, backgroundColor: 'white'}}>
-        
-        <Header
-        containerStyle= {{ backgroundColor: 'white', }}
-         leftComponent={ <TouchableOpacity onPress={()=>navigation.goBack() }><Icon name="chevron-back-circle-outline" size="small" style={{color: '#46369F',fontSize: RFPercentage(6),}}/></TouchableOpacity> }
-         centerComponent={<Text style={styless.booking}>Booking ID {id}</Text>}/>
+        <View style={{ backgroundColor: 'white', flexDirection: 'column', flex: 1 }}>
+
+            <Header
+                containerStyle={{ backgroundColor: 'white', }}
+                leftComponent={<TouchableOpacity onPress={() => navigation.goBack()}><Icon name="chevron-back-circle-outline" size="small" style={{ color: '#46369F', fontSize: RFPercentage(6), }} /></TouchableOpacity>}
+                centerComponent={<Text style={styless.booking}>Booking ID {id}</Text>} />
 
 
 
-<ProgressSteps  marginBottom={10} borderWidth="2" completedProgressBarColor="#F37193" completedStepIconColor="#F37193" nextBtnDisabled={true} nextBtnDisabled= {true} isComplete={true} labelFontSize="12"  >
-        <ProgressStep marginBottom="10" progressBarColor='#F37193' removeBtnRow={true} label="Booked">
-            <View style={{ alignItems: 'center' }}>
-                {/* <Text>This is the content within step 1!</Text> */}
+
+
+            <ProgressSteps marginBottom={10} borderWidth="2" completedProgressBarColor="#F37193" completedStepIconColor="#F37193" nextBtnDisabled={true} nextBtnDisabled={true} isComplete={true} labelFontSize="12"  >
+                <ProgressStep marginBottom="10" progressBarColor='#F37193' removeBtnRow={true} label="Booked">
+                    <View style={{ alignItems: 'center' }}>
+                        {/* <Text>This is the content within step 1!</Text> */}
+                    </View>
+                </ProgressStep>
+                <ProgressStep label="Confirmed">
+                    <View style={{ alignItems: 'center' }}>
+                        {/* <Text>This is the content within step 2!</Text> */}
+                    </View>
+                </ProgressStep>
+                <ProgressStep label="Completed">
+                    <View style={{ alignItems: 'center' }}>
+                        <Text>This is the content within step 3!</Text>
+                    </View>
+                </ProgressStep>
+            </ProgressSteps>
+
+
+
+
+
+            <Card containerStyle={{ height: '60%' }}>
+
+                <Text style={{ fontSize: 18, color: '#46369f', fontWeight: '800' }}>Booking Detail </Text>
+                <View style={{ flexDirection: 'column', paddingTop: 10, paddingLeft:5}}>
+
+                    <View style={{ flexDirection: 'column', paddingTop: 4, paddingLeft: 3, }}>
+                        <Text style={{ fontSize: 18, fontWeight: "600" }}>Working time</Text>
+                        <Text style={{ color: 'gray' }}>Monday-22 March</Text>
+                        <Text style={{ color: 'gray' }}>12:00pm</Text></View>
+
+                    <View style={{ flexDirection: 'column', paddingTop: 7, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Note</Text>
+                        <Text style={{ color: 'gray' }}>No note added</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Domestic Worker</Text>
+                        <Text style={{ color: 'gray' }}>Janet</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Location</Text>
+                        <Text style={{ color: 'gray' }}>Monday-22 March</Text>
+                    </View>
+
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Working Hour</Text>
+                        <Text style={{ color: 'gray' }}>3 hours - 10:30am to 12:00pm</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Cost</Text>
+                        <Text style={{ color: 'gray' }}>Rs 4000</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Method Of Payement</Text>
+                        <Text style={{ color: 'gray' }}>Credit Card</Text>
+                    </View>
+
+
+                </View>
+
+
+
+            </Card>
+
+
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+
+                <SignUpButton text='Cancel' color='#FFFFFF' bgcolor='#ff6961' width={width / 2.5} />
+                <SignUpButton text='Book Again' color='#F7658B' bgcolor='#ffebf0' width={width / 2.5} />
+
+
             </View>
-        </ProgressStep>
-        <ProgressStep label="Confirmed">
-            <View style={{ alignItems: 'center' }}>
-                {/* <Text>This is the content within step 2!</Text> */}
-            </View>
-        </ProgressStep>
-        <ProgressStep label="Completed">
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 3!</Text>
-            </View>
-        </ProgressStep>
-    </ProgressSteps>
-
-    <Card  containerStyle= {{ height: '60%' }}>
-  
- <Text>hi</Text>
-
- 
-
-</Card>
-
-
-        <ScrollView>
-              
-            
 
 
 
 
-       
-        </ScrollView>
+
         </View>
 
 
@@ -88,7 +128,7 @@ const styless = StyleSheet.create({
 
     navbarr: {
 
-        flexDirection: 'row',   
+        flexDirection: 'row',
         alignContent: 'center',
         justifyContent: 'space-evenly',
         position: 'relative',
@@ -109,7 +149,7 @@ const styless = StyleSheet.create({
         fontWeight: '800',
         fontSize: 18,
         marginTop: 10,
-        
+
     },
 
 });
