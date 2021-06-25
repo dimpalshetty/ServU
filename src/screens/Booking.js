@@ -70,7 +70,7 @@ export const Booking = ({ navigation, props }) => {
 
                 <View style={{flexDirection: 'column'}}>
 
-                <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty  ' text1='Cleaning' id='#123455' />
+                <Bookbox image ={require('../../assets/images/profile.jpg')} text='Jake Peralta' text1='Cleaning' id='#123455' />
 
                 </View>
 

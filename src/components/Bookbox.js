@@ -9,6 +9,9 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
+
+
+
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
