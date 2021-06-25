@@ -13,6 +13,8 @@ import { WorkerProfile } from './src/screens/WorkerProfile';
 
 
 
+import {BookingDetails} from './src/screens/BookingDetails';
+import {Notifications} from './src/screens/Notifications';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -29,6 +31,18 @@ export default () => (
       <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
       <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="SignupPage" component={SignUpPage} options={{ headerShown: false }} />
+    
+    <AuthStack.Screen name="BookingDetails" component={BookingDetails} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="Notifications" component={Notifications} options={{ headerShown:false }}/>
+    
+    
+   
+    
+
+
+   
+
+
     </AuthStack.Navigator>
   </NavigationContainer>
 
@@ -48,9 +62,12 @@ function HomeStack() {
             : 'home-outline';
         } else if (route.name === 'Booking') {
           iconName = focused ? 'book' : 'book-outline';
-        } else if (route.name === 'Hi') {
-          iconName = focused ? 'chatbubble' : 'chatbubble-outline';
-        }
+
+        } else if (route.name === 'Chat') {
+          iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
+        } else if (route.name === 'Notifications') {
+          iconName = focused ? 'notifications' : 'notifications-outline';
+        } 
 
         // You can return any component that you like here!
         return <Ionicons name={iconName} size={size} color={color} />;
@@ -62,8 +79,10 @@ function HomeStack() {
       }}>
       <Tab.Screen name="Home" component={HomePage} />
       <Tab.Screen name="Booking" component={Booking} />
-      <Tab.Screen name="Hi" component={LandingPage} />
 
+      <Tab.Screen name="Chat" component={LandingPage} />
+      <Tab.Screen name="Notifications" component={Notifications} />
+  
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
     </Tab.Navigator>
   );
