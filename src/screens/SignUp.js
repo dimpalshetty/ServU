@@ -127,8 +127,8 @@ export const SignUpPage = ({ navigation }) => {
 
                         <Input
                             label="Password"
-                            labelStyle={{ 'color': '#1F1F39' }}
-                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+                            labelStyle={{ 'color': '#1F1F39', }}
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
 
                             placeholder="Your password here"
                             secureTextEntry={true}

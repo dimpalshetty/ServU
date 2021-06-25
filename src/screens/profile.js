@@ -15,6 +15,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+
 
 
 
@@ -29,114 +31,109 @@ const ScreenContainer = ({ children }) => (
 export const Profile = ({ navigation }) => {
 
     return (
-<ScrollView>
-        
-        <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' }}>
+        <ScrollView>
+
+            <ScreenContainer style={{ justifyContent: 'center', alignContent: 'center' ,padding:5}}>
 
 
-            <View style={{ flexDirection: 'column' }}>
+                <View style={{ flexDirection: 'column' }}>
 
-                <View style={styless.navbarr}>
-
-
-
-
-                    <TouchableOpacity style={{ padding: 20, paddingTop: 20, flex: 1 / 3 }} onPress={()=> navigation.goBack() }>
-
-                        <Icon
-                            name='chevron-back-circle-outline'
-                            size="small"
-                            style={{
-                                color: 'white',
-                                fontSize: 50,
+                    <View style={styless.navbarr}>
 
 
 
-                            }}
-                        />
-                    </TouchableOpacity>
+
+                        <TouchableOpacity style={{ padding: 20, paddingTop: 20, flex: 1 / 3 }} onPress={() => navigation.goBack()}>
+
+                            <Icon
+                                name='chevron-back-circle-outline'
+                                size="small"
+                                style={{
+                                    color: 'white',
+                                    fontSize: RFPercentage(6),
 
 
 
-                    <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 25, }}>
-                        <Text style={{ color: 'white', fontSize: 30, }}>Profile</Text>
+                                }}
+                            />
+                        </TouchableOpacity>
+
+
+
+                        <View style={{ alignContent: 'center', alignItems: 'center', flex: 2 / 3, paddingLeft: width / 15, paddingTop: 25, }}>
+                            <Text style={{ color: 'white', fontSize: 30, }}>Profile</Text>
+
+
+                        </View>
 
 
                     </View>
+                    <View  style={{
+                            top: -70,
+                            right: width / 2,
+                            left: width / 3,
+                        }}>
+                        <ProfilePic />
+                    </View>
+
+
 
 
                 </View>
 
-                <ProfilePic >
+                <View style={{ flexDirection: 'column', width: width, top: -80, justifyContent: 'center', }}>
+                    <View style={styles.input}>
+                        <Input
 
-                </ProfilePic>
+                            label="Name"
+                            placeholder="Your name here"
+                            labelStyle={{ 'color': '#1F1F39', padding: 5, }}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, marginTop: 5, }}
+                            leftIcon={
+                                <Icon name="person-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
 
+                                ></Icon>
+                            }
+                        />
+                        <Input
+                            label="Phone"
+                            labelStyle={{ 'color': '#1F1F39', paddingVertical: 5, }}
+                            placeholder="Your phone number here"
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop: 2, paddingBottom: 2, marginTop: 5, }}
 
+                            leftIcon={
+                                <Icon name="phone-portrait-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
 
+                                ></Icon>
+                            }
+                        />
+                        <Input
 
+                            label="Email"
+                            placeholder="Your Email here"
+                            labelStyle={{ 'color': '#1F1F39', paddingVertical: 5, }}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop: 2, paddingBottom: 2, marginTop: 5, }}
+                            leftIcon={
+                                <Icon name="mail-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
 
+                                ></Icon>
+                            }
+                        />
 
-
-
-
-
-
-
-            </View>
-
-            <View style={{ flexDirection: 'column', width: width, top: -80, justifyContent:'center', }}>
-                <View style={styles.input}>
-                    <Input
-
-                        label="Name"
-                        placeholder="Your name here"
-                        labelStyle={{ 'color': '#1F1F39', padding: 5, }}
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25,marginTop: 5, }}
-                        leftIcon={
-                            <Icon name="person-outline"
-                                size={18}
-                                color={'#6e6be8'}
-
-                            ></Icon>
-                        }
-                    />
-                    <Input
-                        label="Phone"
-                        labelStyle={{ 'color': '#1F1F39', paddingVertical: 5, }}
-                        placeholder="Your phone number here"
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2,marginTop: 5,}}
-
-                        leftIcon={
-                            <Icon name="phone-portrait-outline"
-                                size={18}
-                                color={'#6e6be8'}
-
-                            ></Icon>
-                        }
-                    />
-                    <Input
-
-                        label="Email"
-                        placeholder="Your Email here"
-                        labelStyle={{ 'color': '#1F1F39', paddingVertical: 5,}}
-                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2, marginTop: 5,}}
-                        leftIcon={
-                            <Icon name="mail-outline"
-                                size={18}
-                                color={'#6e6be8'}
-
-                            ></Icon>
-                        }
-                    />
-
-<Input
+                        <Input
                             label="Change Password"
-                            labelStyle={{ 'color': '#1F1F39' , paddingVertical: 5,}}
+                            labelStyle={{ 'color': '#1F1F39', paddingVertical: 5, }}
 
                             placeholder="Your Current Password Here"
-                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop:2, paddingBottom:2, marginTop: 5,}}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', height: height / 25, paddingTop: 2, paddingBottom: 2, marginTop: 5, }}
                             secureTextEntry={true}
-                            
+
                             leftIcon={
                                 <Icon name="lock-closed-outline"
                                     size={18}
@@ -146,16 +143,16 @@ export const Profile = ({ navigation }) => {
                             }
                         />
 
+                    </View>
+                    <View style={{ alignItems: 'center', top: -15 }}>
+                        <SignUpButton text='Confirm' color='#583EF2' bgcolor='#EAEAFF' width={width / 1.1} />
+                    </View>
+                    <View style={{ alignItems: 'center', top: 20 }}>
+                        <SignUpButton text='SAVE' color='#FFFF' bgcolor='#583ef2' width={width / 1.1} />
+                    </View>
                 </View>
-                <View style={{alignItems: 'center', top: -15 }}>
-                    <SignUpButton text='Confirm' color='#583EF2' bgcolor='#EAEAFF' width={width/1.1} /> 
-                </View>
-                <View style={{alignItems: 'center', top: 20}}>
-                    <SignUpButton text='SAVE' color='#FFFF' bgcolor='#583ef2' width={width/1.1} /> 
-                </View>
-            </View>
 
-        </ScreenContainer>
+            </ScreenContainer>
         </ScrollView>
 
 

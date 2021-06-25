@@ -4,10 +4,9 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import dimps from '../../assets/images/dimps.jpg';
+
 import { useNavigation } from '@react-navigation/native';
 
 const width = Dimensions.get('window').width
