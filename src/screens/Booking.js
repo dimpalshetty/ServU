@@ -28,7 +28,11 @@ const ScreenContainer = ({ children }) => (
     <View style={styles.container}>{children}</View>
 );
 
-export const Booking = ({ navigation }) => {
+
+
+export const Booking = ({ navigation, props }) => {
+    
+    
 
     return (
 <ScrollView>
@@ -43,7 +47,7 @@ export const Booking = ({ navigation }) => {
 
 
 
-                    <TouchableOpacity style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }}>
+                    <TouchableOpacity style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }} onPress={()=>navigation.goBack() }>
 
                         <Icon
                             name='chevron-back-circle-outline'
@@ -70,7 +74,7 @@ export const Booking = ({ navigation }) => {
                 </View>
 
                 <View style={{flexDirection: 'column'}}>
-                <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty' text1='Cleaning'/>
+                <Bookbox image ={require('../../assets/images/dimps.jpg')} text='Dimpal Shetty  ' text1='Cleaning' id='#123455' />
 
                 </View>
 
