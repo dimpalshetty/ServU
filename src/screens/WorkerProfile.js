@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
 });
 
 
-export const WorkerProfile = ({ route }) => {
+export const WorkerProfile = ({ route,navigation }) => {
 
-    const { name } = route.params;
+    const { name,experience } = route.params;
 
     return (
         <View style={{ paddingHorizontal: "2%", backgroundColor: 'white', flex: 1 }}>
@@ -47,12 +47,17 @@ export const WorkerProfile = ({ route }) => {
                                 fontSize: RFPercentage(6),
 
                             }}
+                            onPress={()=>navigation.goBack()}
                         />
                     </TouchableOpacity>}
                 centerComponent={{ text: 'Profile', style: { color: '#46369F', fontSize: RFPercentage(4), fontWeight: 'bold' } }} />
             <ScrollView
                 showsVerticalScrollIndicator={false}>
-                <ProfileCard name={name} />
+                <ProfileCard
+                name={name}
+                experience={experience}
+                location="Mangalore"
+                />
             </ScrollView>
         </View>
     );

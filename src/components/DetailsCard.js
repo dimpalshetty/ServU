@@ -13,7 +13,7 @@ const height = Dimensions.get('window').height
 const DetailsCard = ({ name, experience, image, price, unit }) => {
     const navigation = useNavigation()
 
-    return (<TouchableOpacity onPress={() => navigation.navigate('WorkerProfile', { name:name })} >
+    return (<TouchableOpacity onPress={() => navigation.navigate('WorkerProfile', { name:name,experience:experience})} >
         <View style={styles.box}>
             <View style={styles.box1}>
                 <Image style={styles.square} source={image} />
@@ -29,7 +29,8 @@ const DetailsCard = ({ name, experience, image, price, unit }) => {
                             starSize={200}
                             fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
                             emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
-                            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]} />}
+                            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}
+                             />}
 
                         />
                     </View>

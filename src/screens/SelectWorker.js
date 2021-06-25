@@ -91,7 +91,7 @@ export const SelectWorker = ({ navigation }) => {
             <DetailsCard
                 name='Jake Peralta'
                 experience='5'
-                image={require('../../assets/images/snorlax.jpg')}
+                image={require('../../assets/images/profile.jpg')}
                 price='200'
                 unit='Day'
                 />
