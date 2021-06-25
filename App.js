@@ -7,6 +7,7 @@ import {LandingPage} from './src/screens/landing';
 import {HomePage} from './src/screens/HomePage';
 import {BookingDetails} from './src/screens/BookingDetails';
 import {Profile} from './src/screens/profile';
+import {Notifications} from './src/screens/Notifications';
 import {SignUpPage } from './src/screens/SignUp';
 import {Booking } from './src/screens/Booking';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,6 +23,7 @@ export default () => (
     <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown:false }}/>
     <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown:false }}/>
     <AuthStack.Screen name="BookingDetails" component={BookingDetails} options={{ headerShown:false }}/>
+    <AuthStack.Screen name="Notifications" component={Notifications} options={{ headerShown:false }}/>
     
     
    
@@ -53,8 +55,10 @@ function HomeStack() {
             : 'home-outline';
         } else if (route.name === 'Booking') {
           iconName = focused ? 'book' : 'book-outline';
-        } else if (route.name === 'Hi') {
-          iconName = focused ? 'chatbubble' : 'chatbubble-outline';
+        } else if (route.name === 'Chat') {
+          iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
+        } else if (route.name === 'Notifications') {
+          iconName = focused ? 'notifications' : 'notifications-outline';
         } 
 
         // You can return any component that you like here!
@@ -67,7 +71,8 @@ function HomeStack() {
     }}>
       <Tab.Screen name="Home" component={HomePage} />
       <Tab.Screen name="Booking" component={Booking} />
-      <Tab.Screen name="Hi" component={LandingPage} />
+      <Tab.Screen name="Chat" component={LandingPage} />
+      <Tab.Screen name="Notifications" component={Notifications} />
   
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
     </Tab.Navigator>

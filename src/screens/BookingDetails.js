@@ -15,6 +15,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import { Header, Card } from "react-native-elements";
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import SignUpButton from '../../src/components/button';
+import CustomHeader from "../components/header";
 
 
 
@@ -33,10 +34,7 @@ export const BookingDetails = ({ route, navigation }) => {
 
         <View style={{ backgroundColor: 'white', flexDirection: 'column', flex: 1 }}>
 
-            <Header
-                containerStyle={{ backgroundColor: 'white', }}
-                leftComponent={<TouchableOpacity onPress={() => navigation.goBack()}><Icon name="chevron-back-circle-outline" size="small" style={{ color: '#46369F', fontSize: RFPercentage(6), }} /></TouchableOpacity>}
-                centerComponent={<Text style={styless.booking}>Booking ID {id}</Text>} />
+            <CustomHeader id={id} title="Booking ID"/>
 
 
 
