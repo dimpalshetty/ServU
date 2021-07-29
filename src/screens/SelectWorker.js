@@ -70,7 +70,7 @@ export const SelectWorker = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <View> 
-                        <Text style={{ color: 'white', fontSize: 30,  }}>Need help?</Text ><Text style={{ color: 'white', fontSize: 30,  }}>Book a Maid</Text>
+                        <Text style={{ color: 'white', fontSize: 30,  }}>Need help?</Text><Text style={{ color: 'white', fontSize: 30,  }}>Book a Maid</Text>
                         </View>
                     <TouchableOpacity >
 

@@ -25,6 +25,7 @@ const ProfileCard = ({ name,experience,location }) => {
 
             <Card containerStyle={{
                 padding:0,
+                margin:0,
                 borderBottomRightRadius: 50,
                 borderBottomLeftRadius: 50,
                 borderTopRightRadius: 50,
