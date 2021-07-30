@@ -39,8 +39,8 @@ export const LandingPage = ({ navigation }) => {
         </View>
 
         <View style={{flexDirection:'row',flex:1/4,justifyContent:'space-evenly',width:width}}>
-          <CustomButton text='Login' color='#ffff' bgcolor='#BBBBD2' width={width / 2.5} />
-          <CustomButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width / 2.5} />
+          <CustomButton onPress={() => navigation.navigate("SignUpPage")} text='Login' color='#ffff' bgcolor='#BBBBD2' width={width / 2.5} />
+          <CustomButton onPress={() => navigation.navigate("SignUpPage")} text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width / 2.5} />
 
         </View>
       </View>

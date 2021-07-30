@@ -4,8 +4,8 @@ import { Text, View,   StyleSheet,TouchableOpacity } from 'react-native'
 
 
 
-const Button = ({ text,color,bgcolor ,width}) => {
-  return (<TouchableOpacity style={[styles.btnContainerStyle,bgcolor && {backgroundColor:bgcolor},width && {width}]}>
+const Button = ({ text,color,bgcolor ,width, onPress}) => {
+  return (<TouchableOpacity onPress={onPress} style={[styles.btnContainerStyle,bgcolor && {backgroundColor:bgcolor},width && {width}]}>
       <View >
         <Text style={[styles.btnTextStyle,color && {color}]}> {text} </Text>
       </View>
