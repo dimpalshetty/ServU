@@ -1,6 +1,7 @@
 import React from "react";
 import {
     Text,
+    useState,
     StyleSheet,
     View,
     Image,
@@ -13,9 +14,21 @@ import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
+import {signIn} from '../../API/firebaseMethods';
+const firestore_ref=firestore().collection('Users')
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
+
+const firebaseConfig={
+    apiKey: "AIzaSyBHdWiVj_PtBStUNsHmet3mcnGgean3LWQ",
+    authDomain: "servu-df1cd.firebaseapp.com",
+    projectId: "servu-df1cd",
+    storageBucket: "servu-df1cd.appspot.com",
+    messagingSenderId: "25172275861",
+    appId: "1:25172275861:web:2dc3ef61b6c2eafa50a19c",
+    measurementId: "G-BQG87NNNNV"
+  }
 
 const styles = StyleSheet.create({
     container: {
@@ -74,7 +87,22 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignInPage = ({ navigation }) => {
-
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+      
+        const handlePress = () => {
+          if (!email) {
+            Alert.alert('Email field is required.');
+          }
+      
+          if (!password) {
+            Alert.alert('Password field is required.');
+          }
+      
+          signIn(email, password);
+          setEmail('');
+          setPassword('');
+        };
     return (
         <ScreenContainer>
             <ScrollView
@@ -103,7 +131,9 @@ export const SignInPage = ({ navigation }) => {
                             placeholder="Your email number here"
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
                             textContentType="emailAddress"
-
+                            value={email}
+                            onChangeText={(email) => setEmail(email)}
+        autoCapitalize="none"
                             leftIcon={
                                 <Icon name="mail-outline"
                                     size={18}
@@ -120,6 +150,8 @@ export const SignInPage = ({ navigation }) => {
 
                             placeholder="Your password here"
                             secureTextEntry={true}
+                            value={password}
+        onChangeText={(password) => setPassword(password)}
                             leftIcon={
                                 <Icon name="lock-closed-outline"
                                     size={18}
@@ -131,7 +163,7 @@ export const SignInPage = ({ navigation }) => {
 
   
                     </View>
-                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={() => navigation.navigate("HomePage")}/>
+                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={handlePress}/>
                 </View>
             </ScrollView>
         </ScreenContainer>

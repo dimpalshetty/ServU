@@ -16,6 +16,8 @@ import { Input } from 'react-native-elements';
 import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import * as firebase from 'firebase';
+import {loggingOut} from '../../API/firebaseMethods';
 
 
 
@@ -29,6 +31,33 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const Profile = ({ navigation }) => {
+
+    let currentUserUID = firebase.auth().currentUser.uid;
+  const [Name, setName] = useState('');
+
+  useEffect(() => {
+    async function getUserInfo(){
+      let doc = await firebase
+      .firestore()
+      .collection('users')
+      .doc(currentUserUID)
+      .get();
+
+      if (!doc.exists){
+        Alert.alert('No user data found!')
+      } else {
+        let dataObj = doc.data();
+        setFirstName(dataObj.Name)
+      }
+    }
+    getUserInfo();
+  })
+
+  const handlePress = () => {
+    loggingOut();
+    navigation.replace('LandingPage');
+  };
+
 
     return (
         <ScrollView>
@@ -149,6 +178,9 @@ export const Profile = ({ navigation }) => {
                     </View>
                     <View style={{ alignItems: 'center', top: 20 }}>
                         <SignUpButton text='SAVE' color='#FFFF' bgcolor='#583ef2' width={width / 1.1} />
+                    </View>
+                    <View style={{ alignItems: 'center', top: 20 }}>
+                        <SignUpButton text='LOG OUT' color='#FFFF' bgcolor='#FF6961' width={width / 1.1} onPress={handlePress} />
                     </View>
                 </View>
 

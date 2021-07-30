@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { LandingPage } from './src/screens/landing';
+import { LoadingScreen } from './src/screens/LoadingScreen';
 import { HomePage } from './src/screens/HomePage';
 import { Profile } from './src/screens/profile';
 import { SignUpPage } from './src/screens/SignUp';
@@ -15,13 +16,25 @@ import { BookingDetails } from './src/screens/BookingDetails';
 import { Notifications } from './src/screens/Notifications';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import apiKeys from './config/keys';
+import * as firebase from 'firebase';
+
+
+
 
 
 
 const AuthStack = createStackNavigator();
-export default () => (
+export default function App (){
+
+  if (!firebase.apps.length) {
+    console.log('Connected with Firebase')
+    firebase.initializeApp(apiKeys.firebaseConfig);
+  }
+  
   <NavigationContainer>
     <AuthStack.Navigator>
+    <AuthStack.Screen name="LoadingScreen" component={LoadingScreen} options={{ headerShown: false }} />
       <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="SignInPage" component={SignInPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
@@ -43,7 +56,7 @@ export default () => (
     </AuthStack.Navigator>
   </NavigationContainer>
 
-)
+}
 
 const Tab = createBottomTabNavigator();
 

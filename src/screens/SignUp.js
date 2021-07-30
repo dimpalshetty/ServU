@@ -2,6 +2,7 @@ import React from "react";
 import {
     Text,
     StyleSheet,
+    useState, 
     View,
     Image,
     Dimensions,
@@ -13,6 +14,7 @@ import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
+import { registration } from '../../API/firebaseMethods';
 
 
 const width = Dimensions.get('window').width
@@ -75,7 +77,44 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignUpPage = ({ navigation }) => {
+ const [Name, setName] = useState('');
+        const [Phone, setPhone] = useState('');
+        const [Email, setEmail] = useState('');
+        const [Password, setPassword] = useState('');
+        const [confirmPassword, setConfirmPassword] = useState('');
 
+        const emptyState = () => {
+            setName('');
+            setPhone('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+          };   
+          
+          
+          const handlePress = () => {
+            if (!Name) {
+              Alert.alert('Name is required');
+            } else if (!email) {
+              Alert.alert('Email field is required.');
+            } else if (!password) {
+              Alert.alert('Password field is required.');
+            } else if (!confirmPassword) {
+              setPassword('');
+              Alert.alert('Confirm password field is required.');
+            } else if (password !== confirmPassword) {
+              Alert.alert('Password does not match!');
+            } else {
+              registration(
+                Name,
+                email,
+                Phone,
+                password,
+              );
+              navigation.navigate('Loading');
+              emptyState();
+            }
+          };      
     return (
         <ScreenContainer>
             <ScrollView
@@ -98,6 +137,8 @@ export const SignUpPage = ({ navigation }) => {
                     <Select/>
                     <View style={styles.input}>
                         <Input
+                            value={Name}
+                            onChangeText={(name) => setName(name)}
                             label="Name"
                             placeholder="Your name here"
                             labelStyle={{ 'color': '#1F1F39' }}
@@ -110,7 +151,25 @@ export const SignUpPage = ({ navigation }) => {
                                 ></Icon>
                             }
                         />
+                         <Input
+                           value={Email}
+                            onChangeText={(email) => setEmail(email)}
+                            label="Email"
+                            labelStyle={{ 'color': '#1F1F39' }}
+                            placeholder="Your mail here"
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+
+                            leftIcon={
+                                <Icon name="phone-portrait-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
                         <Input
+                        value={Phone}
+                            onChangeText={(phone) => setPhone(phone)}
                             label="Phone"
                             labelStyle={{ 'color': '#1F1F39' }}
                             placeholder="Your phone number here"
@@ -126,6 +185,8 @@ export const SignUpPage = ({ navigation }) => {
                         />
 
                         <Input
+                            value={Password}
+                         onChangeText={(password) => setPassword(password)}
                             label="Password"
                             labelStyle={{ 'color': '#1F1F39', }}
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
@@ -142,6 +203,8 @@ export const SignUpPage = ({ navigation }) => {
                         />
 
                         <Input
+                        onChangeText={(password2) => setConfirmPassword(password2)}
+          
                             label="Confirm Password"
                             labelStyle={{ 'color': '#1F1F39' }}
 
@@ -158,7 +221,7 @@ export const SignUpPage = ({ navigation }) => {
                             }
                         />
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
+                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={handlePress} />
                 </View>
             </ScrollView>
         </ScreenContainer>
