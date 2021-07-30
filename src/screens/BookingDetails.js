@@ -35,7 +35,7 @@ export const BookingDetails = ({ route }) => {
 
 
 
-            <ProgressSteps marginBottom={10} borderWidth='2' completedProgressBarColor='#F37193' completedStepIconColor='#F37193' nextBtnDisabled={true} nextBtnDisabled={true} isComplete={true} labelFontSize='12'  >
+            <ProgressSteps marginBottom={10}  completedProgressBarColor='#F37193' completedStepIconColor='#F37193' nextBtnDisabled={true} nextBtnDisabled={true} isComplete={true} >
                 <ProgressStep marginBottom='10' progressBarColor='#F37193' removeBtnRow={true} label='Booked'>
                     <View style={{ alignItems: 'center' }}>
                     </View>
