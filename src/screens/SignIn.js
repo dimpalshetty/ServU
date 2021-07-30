@@ -131,7 +131,7 @@ export const SignInPage = ({ navigation }) => {
 
   
                     </View>
-                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
+                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={() => navigation.navigate("HomePage")}/>
                 </View>
             </ScrollView>
         </ScreenContainer>
