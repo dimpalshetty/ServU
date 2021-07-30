@@ -14,7 +14,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
 
-
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 120
     },
-    SignUp: {
+    SignIn: {
         fontWeight: 'bold',
         fontSize: 30,
         alignContent: 'center',
@@ -74,7 +73,7 @@ const ScreenContainer = ({ children }) => (
     <View style={styles.container}>{children}</View>
 );
 
-export const SignUpPage = ({ navigation }) => {
+export const SignInPage = ({ navigation }) => {
 
     return (
         <ScreenContainer>
@@ -90,34 +89,23 @@ export const SignUpPage = ({ navigation }) => {
                             resizeMode: 'contain'
                         }}
                         source={house} />
-                    <Text style={styles.SignUp}>Sign Up</Text>
-                    <Text style={styles.Info}>Please enter the details to sign up and create an account.</Text>
+                    <Text style={styles.SignIn}>Log In</Text>
+                    <Text style={styles.Info}>Please enter the details to sign in to your account.</Text>
 
                 </View>
                 <View style={styles.body}>
                     <Select/>
                     <View style={styles.input}>
-                        <Input
-                            label="Name"
-                            placeholder="Your name here"
-                            labelStyle={{ 'color': '#1F1F39' }}
-                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
-                            leftIcon={
-                                <Icon name="person-outline"
-                                    size={18}
-                                    color={'#6e6be8'}
 
-                                ></Icon>
-                            }
-                        />
                         <Input
-                            label="Phone"
+                            label="Email"
                             labelStyle={{ 'color': '#1F1F39' }}
-                            placeholder="Your phone number here"
+                            placeholder="Your email number here"
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+                            textContentType="emailAddress"
 
                             leftIcon={
-                                <Icon name="phone-portrait-outline"
+                                <Icon name="mail-outline"
                                     size={18}
                                     color={'#6e6be8'}
 
@@ -141,24 +129,9 @@ export const SignUpPage = ({ navigation }) => {
                             }
                         />
 
-                        <Input
-                            label="Confirm Password"
-                            labelStyle={{ 'color': '#1F1F39' }}
-
-                            placeholder="Retype password here"
-                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
-                            secureTextEntry={true}
-                            
-                            leftIcon={
-                                <Icon name="lock-closed-outline"
-                                    size={18}
-                                    color={'#6e6be8'}
-
-                                ></Icon>
-                            }
-                        />
+  
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
+                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
                 </View>
             </ScrollView>
         </ScreenContainer>

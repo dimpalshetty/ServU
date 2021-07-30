@@ -10,9 +10,7 @@ import { SignUpPage } from './src/screens/SignUp';
 import { Booking } from './src/screens/Booking';
 import { SelectWorker } from './src/screens/SelectWorker';
 import { WorkerProfile } from './src/screens/WorkerProfile';
-
-
-
+import { SignInPage } from './src/screens/SignIn';
 import { BookingDetails } from './src/screens/BookingDetails';
 import { Notifications } from './src/screens/Notifications';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -24,24 +22,20 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
-    <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
-
-    <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
-    <AuthStack.Screen name="SignUpPage" component={SignUpPage} options={{ headerShown: false }} />
-    <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
-
+      <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
+      <AuthStack.Screen name="SignInPage" component={SignInPage} options={{ headerShown: false }} />
+      <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
+      <AuthStack.Screen name="SignUpPage" component={SignUpPage} options={{ headerShown: false }} />
+      <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
       <AuthStack.Screen name="WorkerProfile" component={WorkerProfile} options={{ headerShown: false }} />
       <AuthStack.Screen name="Booking" component={Booking} options={{ headerShown: false }} />
       <AuthStack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
-     
-     
-    
-    <AuthStack.Screen name="BookingDetails" component={BookingDetails} options={{ headerShown:false }}/>
-    <AuthStack.Screen name="Notifications" component={Notifications} options={{ headerShown:false }}/>
-    
-    
-   
-    
+      <AuthStack.Screen name="BookingDetails" component={BookingDetails} options={{ headerShown: false }} />
+      <AuthStack.Screen name="Notifications" component={Notifications} options={{ headerShown: false }} />
+
+
+
+
 
 
 
