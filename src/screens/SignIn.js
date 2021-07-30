@@ -87,8 +87,8 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignInPage = ({ navigation }) => {
-    const [email,setEmail]=useState('')
-    const [password,setPassword]=useState('')
+    const [Email,setEmail]=useState('')
+    const [Password,setPassword]=useState('')
       
         const handlePress = () => {
           if (!email) {
@@ -99,7 +99,7 @@ export const SignInPage = ({ navigation }) => {
             Alert.alert('Password field is required.');
           }
       
-          signIn(email, password);
+          signIn(Email, Password);
           setEmail('');
           setPassword('');
         };

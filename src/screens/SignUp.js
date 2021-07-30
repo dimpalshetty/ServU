@@ -107,9 +107,9 @@ export const SignUpPage = ({ navigation }) => {
             } else {
               registration(
                 Name,
-                email,
+                Email,
                 Phone,
-                password,
+                Password,
               );
               navigation.navigate('Loading');
               emptyState();

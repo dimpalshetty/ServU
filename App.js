@@ -21,9 +21,6 @@ import * as firebase from 'firebase';
 
 
 
-
-
-
 const AuthStack = createStackNavigator();
 export default function App (){
 
