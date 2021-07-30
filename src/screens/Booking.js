@@ -25,7 +25,7 @@ const ScreenContainer = ({ children }) => (
 
 
 
-export const Booking = ({ navigation, props }) => {
+export const Booking = ({ navigation}) => {
     
     
 

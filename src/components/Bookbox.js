@@ -24,7 +24,7 @@ const Bookbox = ({ image, text, text1, id }) => {
   return (
     
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-      <TouchableOpacity style={styles.bookno} onPress={() => navigation.navigate('BookingDetails', { id: id })}>
+      <TouchableOpacity style={styles.bookno} onPress={() => navigation.push('BookingDetails',{ id:id })}>
         <View style={styles.boxbox}>
           <Image style={{ height: 75, width: 75, marginLeft: 5,  marginTop: 10, marginBottom: 10, borderRadius: 20, }} source={image} />
           <Text style={styles.booking}> You Have Booked {text} For The Task Of {text1}. The Booking ID is {id} </Text>

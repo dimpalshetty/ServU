@@ -8,11 +8,8 @@ import {
 
 } from 'react-native';
 
-import Icon from "react-native-vector-icons/Ionicons";
-import styles from "../../styles";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { RFPercentage } from "react-native-responsive-fontsize";
-import { Header, Card } from "react-native-elements";
+
+import { Card } from "react-native-elements";
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import SignUpButton from '../../src/components/button';
 import CustomHeader from "../components/header";
@@ -23,18 +20,16 @@ const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
 
-const ScreenContainer = ({ children }) => (
-    <View style={styles.container}>{children}</View>
-);
 
-export const BookingDetails = ({ route, navigation }) => {
+
+export const BookingDetails = ({ route }) => {
     const { id } = route.params;
 
     return (
 
         <View style={{ backgroundColor: 'white', flexDirection: 'column', flex: 1 }}>
 
-            <CustomHeader id={id} title="Booking ID"/>
+            <CustomHeader id={id} title="Booking ID" />
 
 
 
@@ -63,7 +58,7 @@ export const BookingDetails = ({ route, navigation }) => {
             <Card containerStyle={{ height: '60%' }}>
 
                 <Text style={{ fontSize: 18, color: '#46369f', fontWeight: '800' }}>Booking Detail </Text>
-                <View style={{ flexDirection: 'column', paddingTop: 10, paddingLeft:5}}>
+                <View style={{ flexDirection: 'column', paddingTop: 10, paddingLeft: 5 }}>
 
                     <View style={{ flexDirection: 'column', paddingTop: 4, paddingLeft: 3, }}>
                         <Text style={{ fontSize: 18, fontWeight: "600" }}>Working time</Text>
