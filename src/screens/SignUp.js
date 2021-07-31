@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Text,
     StyleSheet,
@@ -14,7 +14,7 @@ import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
-import { registration } from '../../API/firebaseMethods';
+import firebase from '../../firebase';
 
 
 const width = Dimensions.get('window').width
@@ -77,44 +77,21 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignUpPage = ({ navigation }) => {
- const [Name, setName] = useState('');
-        const [Phone, setPhone] = useState('');
-        const [Email, setEmail] = useState('');
-        const [Password, setPassword] = useState('');
-        const [confirmPassword, setConfirmPassword] = useState('');
+    const [phone,setPhone] = useState('');
+    const [email,setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [error,setError]= useState('');
 
-        const emptyState = () => {
-            setName('');
-            setPhone('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
-          };   
-          
-          
-          const handlePress = () => {
-            if (!Name) {
-              Alert.alert('Name is required');
-            } else if (!email) {
-              Alert.alert('Email field is required.');
-            } else if (!password) {
-              Alert.alert('Password field is required.');
-            } else if (!confirmPassword) {
-              setPassword('');
-              Alert.alert('Confirm password field is required.');
-            } else if (password !== confirmPassword) {
-              Alert.alert('Password does not match!');
-            } else {
-              registration(
-                Name,
-                Email,
-                Phone,
-                Password,
-              );
-              navigation.navigate('Loading');
-              emptyState();
-            }
-          };      
+    const signUp = async() => {
+        try{
+            firebase.auth().createUserWithEmailAndPassword(email.trim(),password);
+            navigation.navigate('SignInPage');      
+          }catch(err){
+            setError(err.message);
+        }
+     
+    }
     return (
         <ScreenContainer>
             <ScrollView
@@ -137,8 +114,8 @@ export const SignUpPage = ({ navigation }) => {
                     <Select/>
                     <View style={styles.input}>
                         <Input
-                            value={Name}
-                            onChangeText={(name) => setName(name)}
+                            value={name}
+                            onChangeText={setName}
                             label="Name"
                             placeholder="Your name here"
                             labelStyle={{ 'color': '#1F1F39' }}
@@ -171,6 +148,8 @@ export const SignUpPage = ({ navigation }) => {
                         value={Phone}
                             onChangeText={(phone) => setPhone(phone)}
                             label="Phone"
+                            value={phone}
+                            onChangeText={setPhone}
                             labelStyle={{ 'color': '#1F1F39' }}
                             placeholder="Your phone number here"
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
@@ -185,14 +164,30 @@ export const SignUpPage = ({ navigation }) => {
                         />
 
                         <Input
-                            value={Password}
-                         onChangeText={(password) => setPassword(password)}
+                        value={password}
+                        onChangeText={setPassword}
                             label="Password"
                             labelStyle={{ 'color': '#1F1F39', }}
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
 
                             placeholder="Your password here"
                             secureTextEntry={true}
+                            leftIcon={
+                                <Icon name="lock-closed-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
+                        <Input
+                        value={email}
+                        onChangeText={setEmail}
+                            label="Email"
+                            labelStyle={{ 'color': '#1F1F39', }}
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
+
+                            placeholder="Your password here"
                             leftIcon={
                                 <Icon name="lock-closed-outline"
                                     size={18}
@@ -220,8 +215,12 @@ export const SignUpPage = ({ navigation }) => {
                                 ></Icon>
                             }
                         />
+{
+    error?<Text style={{color: 'red'}}>Error</Text>: null
+}
+
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={handlePress} />
+                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={()=>signUp()} />
                 </View>
             </ScrollView>
         </ScreenContainer>

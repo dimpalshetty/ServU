@@ -25,8 +25,6 @@ export default class Srch extends React.Component {
   };
 
   render() {
-
-
     return (
       <SearchBar inputStyle={{backgroundColor: 'white'}}
       containerStyle={{backgroundColor: 'white', borderWidth: 0, borderColor:'white', borderBottomLeftRadius:15,  borderBottomRightRadius:15, borderTopRightRadius:15, width: width/1.1, height:height/14 }}
