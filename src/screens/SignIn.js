@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Text,
     StyleSheet,
@@ -13,6 +13,7 @@ import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
+import firebase from '../../firebase';
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -75,6 +76,21 @@ const ScreenContainer = ({ children }) => (
 
 export const SignInPage = ({ navigation }) => {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const signIn = async() => {
+        console.log('hey');
+        try{
+           const response = await firebase.auth().signInWithEmailAndPassword(email.trim(),password);
+            navigation.navigate('HomePage');      
+          }catch(err){
+            setError(err.message);
+        }
+     
+    }
+
     return (
         <ScreenContainer>
             <ScrollView
@@ -98,6 +114,8 @@ export const SignInPage = ({ navigation }) => {
                     <View style={styles.input}>
 
                         <Input
+                        value={email}
+                        onChangeText={setEmail}
                             label="Email"
                             labelStyle={{ 'color': '#1F1F39' }}
                             placeholder="Your email number here"
@@ -114,6 +132,8 @@ export const SignInPage = ({ navigation }) => {
                         />
 
                         <Input
+                        value={password}
+                        onChangeText={setPassword}
                             label="Password"
                             labelStyle={{ 'color': '#1F1F39', }}
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
@@ -128,10 +148,13 @@ export const SignInPage = ({ navigation }) => {
                                 ></Icon>
                             }
                         />
-
+                        {
+    error?<Text style={{color: 'red'}}>{error}</Text>: null
+}
+ 
   
                     </View>
-                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={() => navigation.navigate("HomePage")}/>
+                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={() => signIn()}/>
                 </View>
             </ScrollView>
         </ScreenContainer>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Text,
     StyleSheet,
@@ -13,6 +13,7 @@ import SignUpButton from '../../src/components/button';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
+import firebase from '../../firebase';
 
 
 const width = Dimensions.get('window').width
@@ -75,7 +76,21 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignUpPage = ({ navigation }) => {
+    const [phone,setPhone] = useState('');
+    const [email,setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [error,setError]= useState('');
 
+    const signUp = async() => {
+        try{
+            firebase.auth().createUserWithEmailAndPassword(email.trim(),password);
+            navigation.navigate('SignInPage');      
+          }catch(err){
+            setError(err.message);
+        }
+     
+    }
     return (
         <ScreenContainer>
             <ScrollView
@@ -98,6 +113,8 @@ export const SignUpPage = ({ navigation }) => {
                     <Select/>
                     <View style={styles.input}>
                         <Input
+                            value={name}
+                            onChangeText={setName}
                             label="Name"
                             placeholder="Your name here"
                             labelStyle={{ 'color': '#1F1F39' }}
@@ -112,6 +129,8 @@ export const SignUpPage = ({ navigation }) => {
                         />
                         <Input
                             label="Phone"
+                            value={phone}
+                            onChangeText={setPhone}
                             labelStyle={{ 'color': '#1F1F39' }}
                             placeholder="Your phone number here"
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
@@ -126,12 +145,30 @@ export const SignUpPage = ({ navigation }) => {
                         />
 
                         <Input
+                        value={password}
+                        onChangeText={setPassword}
                             label="Password"
                             labelStyle={{ 'color': '#1F1F39', }}
                             inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
 
                             placeholder="Your password here"
                             secureTextEntry={true}
+                            leftIcon={
+                                <Icon name="lock-closed-outline"
+                                    size={18}
+                                    color={'#6e6be8'}
+
+                                ></Icon>
+                            }
+                        />
+                        <Input
+                        value={email}
+                        onChangeText={setEmail}
+                            label="Email"
+                            labelStyle={{ 'color': '#1F1F39', }}
+                            inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
+
+                            placeholder="Your password here"
                             leftIcon={
                                 <Icon name="lock-closed-outline"
                                     size={18}
@@ -157,8 +194,12 @@ export const SignUpPage = ({ navigation }) => {
                                 ></Icon>
                             }
                         />
+{
+    error?<Text style={{color: 'red'}}>Error</Text>: null
+}
+
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} />
+                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={()=>signUp()} />
                 </View>
             </ScrollView>
         </ScreenContainer>
