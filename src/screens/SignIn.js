@@ -76,13 +76,14 @@ const ScreenContainer = ({ children }) => (
 
 export const SignInPage = ({ navigation }) => {
 
-    const [email,setEmail] = useState(' ');
-    const [password, setPassword] = useState(' ');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
     const signIn = async() => {
+        console.log('hey');
         try{
-           const response = await firebase.auth().firebase.auth().signInWithEmailAndPassword(email,password);
+           const response = await firebase.auth().signInWithEmailAndPassword(email.trim(),password);
             navigation.navigate('HomePage');      
           }catch(err){
             setError(err.message);
@@ -147,6 +148,9 @@ export const SignInPage = ({ navigation }) => {
                                 ></Icon>
                             }
                         />
+                        {
+    error?<Text style={{color: 'red'}}>{error}</Text>: null
+}
  
   
                     </View>
