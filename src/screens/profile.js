@@ -13,7 +13,6 @@ import SignUpButton from '../../src/components/button';
 import ProfilePic from '../../src/components/ProfilePic';
 import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
-import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
