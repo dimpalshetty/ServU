@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import Icon from "react-native-vector-icons/Ionicons";
-import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { Header, Card } from "react-native-elements";

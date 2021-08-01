@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     taskdes: {
         marginTop: 2,
         color: '#583EF2',
-        fontFamily: 'Futura',
         fontSize: 16,
 
     },

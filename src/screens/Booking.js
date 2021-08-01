@@ -10,7 +10,6 @@ import {
 
 import Bookbox from '../../src/components/Bookbox';
 import Icon from "react-native-vector-icons/Ionicons";
-import styles from "../../styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
