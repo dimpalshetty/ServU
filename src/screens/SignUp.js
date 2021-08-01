@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useCallback,useState} from "react";
 import {
     Text,
     StyleSheet,
@@ -19,58 +19,7 @@ import firebase from '../../firebase';
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        alignItems: "center",
 
-    },
-    Header: {
-        top: 70,
-        alignContent: 'center',
-        alignItems: 'center',
-        marginBottom: 120
-    },
-    SignUp: {
-        fontWeight: 'bold',
-        fontSize: 30,
-        alignContent: 'center',
-        alignItems: 'center',
-        color: '#6E6BE8'
-    },
-
-    Info: {
-        fontSize: 18,
-        textAlign: 'center',
-        alignItems: 'center',
-        width: width / 1.35,
-        color: '#BBBBD2',
-        marginTop:5
-
-    },
-    body: {
-        flexDirection: 'column',
-        borderColor: '#BBBBD2',
-        borderWidth: 2,
-        padding: 5,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: "center",
-        flex: 1,
-        marginBottom: 50
-
-    },
-
-    input: {
-        width: width / 1.25,
-        alignItems: 'flex-start',
-        justifyContent: "center",
-        padding: 8,
-    }
-
-});
 const ScreenContainer = ({ children }) => (
     <View style={styles.container}>{children}</View>
 );
@@ -81,8 +30,20 @@ export const SignUpPage = ({ navigation }) => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error,setError]= useState('');
+    const[userType,setUserType]=useState('user');
+    
+   const callback = useCallback((type) => {
+    console.log(type)
 
+    setUserType(type);
+  }, []);
+
+  const print=()=>{
+    console.log({userType})
+
+  }
     const signUp = async() => {
+        console.log(type)
         try{
             firebase.auth().createUserWithEmailAndPassword(email.trim(),password)
             .then((result)=>{
@@ -103,11 +64,14 @@ export const SignUpPage = ({ navigation }) => {
         }
      
     }
+
     return (
+        
         <ScreenContainer>
             <ScrollView
                 showsVerticalScrollIndicator={false}
             >
+
                 <View style={styles.Header}>
 
                     <Image
@@ -122,7 +86,11 @@ export const SignUpPage = ({ navigation }) => {
 
                 </View>
                 <View style={styles.body}>
-                    <Select/>
+                    <Select
+                   parentCallback = {callback}
+                   
+                    />
+                    
                     <View style={styles.input}>
                         <Input
                             value={name}
@@ -211,9 +179,62 @@ export const SignUpPage = ({ navigation }) => {
 }
 
                     </View>
-                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={()=>signUp()} />
+                    <SignUpButton text='Sign Up' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={()=>print()} />
                 </View>
             </ScrollView>
         </ScreenContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: "center",
+
+    },
+    Header: {
+        top: 70,
+        alignContent: 'center',
+        alignItems: 'center',
+        marginBottom: 120
+    },
+    SignUp: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignContent: 'center',
+        alignItems: 'center',
+        color: '#6E6BE8'
+    },
+
+    Info: {
+        fontSize: 18,
+        textAlign: 'center',
+        alignItems: 'center',
+        width: width / 1.35,
+        color: '#BBBBD2',
+        marginTop:5
+
+    },
+    body: {
+        flexDirection: 'column',
+        borderColor: '#BBBBD2',
+        borderWidth: 2,
+        padding: 5,
+        borderRadius: 15,
+        alignItems: 'center',
+        justifyContent: "center",
+        flex: 1,
+        marginBottom: 50
+
+    },
+
+    input: {
+        width: width / 1.25,
+        alignItems: 'flex-start',
+        justifyContent: "center",
+        padding: 8,
+    }
+
+});

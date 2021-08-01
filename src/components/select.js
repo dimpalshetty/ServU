@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
 const width = Dimensions.get('window').width
 
-const Select =()=>{
+const Select =({parentCallback})=>{
     const [backgroundColor,setBackgroundColor]=useState("#6e6be8")
     const [backgroundColor2,setBackgroundColor2]=useState("grey")
     const [textColor,setTextColor]=useState("white")
     const [textColor2,setTextColor2]=useState("black")
-    const [pressed,setPressed]=useState(false)
+    const [pressed]=useState(false)
 
-    const changeColor=()=>{
+
+
+
+    const changeColor=(event)=>{
         if (!pressed){
             setBackgroundColor2("grey")
             setBackgroundColor("#6e6be8")
             setTextColor2("black")
             setTextColor("white")
-
-        }
+            parentCallback("user")
+       }
 
     }
     const changeColor2=()=>{
@@ -29,6 +31,8 @@ const Select =()=>{
             setBackgroundColor2("#6e6be8")
             setTextColor("black")
             setTextColor2("white")
+            parentCallback("serviceProvider")
+
 
         }
        
