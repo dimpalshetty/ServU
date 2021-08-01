@@ -5,28 +5,28 @@ import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-nati
 
 const width = Dimensions.get('window').width
 
-const Select =({parentCallback})=>{
-    const [backgroundColor,setBackgroundColor]=useState("#6e6be8")
-    const [backgroundColor2,setBackgroundColor2]=useState("grey")
-    const [textColor,setTextColor]=useState("white")
-    const [textColor2,setTextColor2]=useState("black")
-    const [pressed]=useState(false)
+const Select = ({ parentCallback }) => {
+    const [backgroundColor, setBackgroundColor] = useState("#6e6be8")
+    const [backgroundColor2, setBackgroundColor2] = useState("grey")
+    const [textColor, setTextColor] = useState("white")
+    const [textColor2, setTextColor2] = useState("black")
+    const [pressed] = useState(false)
 
 
 
 
-    const changeColor=(event)=>{
-        if (!pressed){
+    const changeColor = (event) => {
+        if (!pressed) {
             setBackgroundColor2("grey")
             setBackgroundColor("#6e6be8")
             setTextColor2("black")
             setTextColor("white")
-            parentCallback("user")
-       }
+            parentCallback("users")
+        }
 
     }
-    const changeColor2=()=>{
-        if (!pressed){
+    const changeColor2 = () => {
+        if (!pressed) {
             setBackgroundColor("grey")
             setBackgroundColor2("#6e6be8")
             setTextColor("black")
@@ -35,49 +35,49 @@ const Select =({parentCallback})=>{
 
 
         }
-       
+
     }
-    
-        return (
-            <View style={styles.navBar}>
-                <TouchableOpacity style={{
-                    backgroundColor:backgroundColor,
-                    borderRadius: 15,
-                    height: 60,
-                    width: width / 2.8,
-                    marginRight: 10,
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}
-                    onPress={() => changeColor()}
-                >
-                    <View >
-                        <Text style={{ color: textColor, fontSize: 15 }}>
-                            User
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={{
-                    backgroundColor: backgroundColor2,
-                    borderRadius: 15,
-                    height: 60,
-                    alignItems: "center",
-                    width: width / 2.8,
 
-                    justifyContent: "center",
-                }}
+    return (
+        <View style={styles.navBar}>
+            <TouchableOpacity style={{
+                backgroundColor: backgroundColor,
+                borderRadius: 15,
+                height: 60,
+                width: width / 2.8,
+                marginRight: 10,
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+                onPress={() => changeColor()}
+            >
+                <View >
+                    <Text style={{ color: textColor, fontSize: 15 }}>
+                        User
+                    </Text>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={{
+                backgroundColor: backgroundColor2,
+                borderRadius: 15,
+                height: 60,
+                alignItems: "center",
+                width: width / 2.8,
+
+                justifyContent: "center",
+            }}
                 onPress={() => changeColor2()}
-                >
-                    <View >
-                        <Text style={{ color: textColor2, fontSize: 15 }}>
-                            Service Provider
-                        </Text>
-                    </View>
-                </TouchableOpacity>
+            >
+                <View >
+                    <Text style={{ color: textColor2, fontSize: 15 }}>
+                        Service Provider
+                    </Text>
+                </View>
+            </TouchableOpacity>
 
-            </View>
-        );
- 
+        </View>
+    );
+
 }
 
 

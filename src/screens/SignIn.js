@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useCallback,useState } from "react";
 import {
     Text,
     StyleSheet,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: width / 1.35,
         color: '#BBBBD2',
-        marginTop:5
+        marginTop: 5
 
     },
     body: {
@@ -79,16 +79,32 @@ export const SignInPage = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [userType, setUserType] = useState('users');
 
-    const signIn = async() => {
-        console.log('hey');
-        try{
-           const response = await firebase.auth().signInWithEmailAndPassword(email.trim(),password);
-            navigation.navigate('HomePage');      
-          }catch(err){
-            setError(err.message);
+    const callback = useCallback((type) => {
+        console.log(type)
+
+        setUserType(type);
+    }, []);
+
+
+    const signIn = async () => {
+        if (userType == "users") {
+            try {
+                await firebase.auth().signInWithEmailAndPassword(email.trim(), password);
+                navigation.navigate('HomePage');
+            } catch (err) {
+                setError(err.message);
+            }
         }
-     
+        else if (userType == "serviceProvider") {
+            try {
+                await firebase.auth().signInWithEmailAndPassword(email.trim(), password);
+                navigation.navigate('SelectWorker');
+            } catch (err) {
+                setError(err.message);
+            }
+        }
     }
 
     return (
@@ -110,16 +126,19 @@ export const SignInPage = ({ navigation }) => {
 
                 </View>
                 <View style={styles.body}>
-                    <Select/>
+                    <Select
+                        parentCallback={callback}
+
+                    />
                     <View style={styles.input}>
 
                         <Input
-                        value={email}
-                        onChangeText={setEmail}
+                            value={email}
+                            onChangeText={setEmail}
                             label="Email"
                             labelStyle={{ 'color': '#1F1F39' }}
                             placeholder="Your email number here"
-                            inputContainerStyle={{'borderBottomColor':'#BBBBD2'}}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2' }}
                             textContentType="emailAddress"
 
                             leftIcon={
@@ -132,11 +151,11 @@ export const SignInPage = ({ navigation }) => {
                         />
 
                         <Input
-                        value={password}
-                        onChangeText={setPassword}
+                            value={password}
+                            onChangeText={setPassword}
                             label="Password"
                             labelStyle={{ 'color': '#1F1F39', }}
-                            inputContainerStyle={{'borderBottomColor':'#BBBBD2',}}
+                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', }}
 
                             placeholder="Your password here"
                             secureTextEntry={true}
@@ -149,12 +168,12 @@ export const SignInPage = ({ navigation }) => {
                             }
                         />
                         {
-    error?<Text style={{color: 'red'}}>{error}</Text>: null
-}
- 
-  
+                            error ? <Text style={{ color: 'red' }}>{error}</Text> : null
+                        }
+
+
                     </View>
-                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width/1.35} onPress={() => signIn()}/>
+                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width / 1.35} onPress={() => signIn()} />
                 </View>
             </ScrollView>
         </ScreenContainer>
