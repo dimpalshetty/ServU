@@ -84,7 +84,19 @@ export const SignUpPage = ({ navigation }) => {
 
     const signUp = async() => {
         try{
-            firebase.auth().createUserWithEmailAndPassword(email.trim(),password);
+            firebase.auth().createUserWithEmailAndPassword(email.trim(),password)
+            .then((result)=>{
+                firebase.firestore().collection("users")
+                .doc(firebase.auth().currentUser.uid)
+                .set({
+                    name,
+                    email,
+                    phone
+                })
+                console.log(result)
+
+            }
+            )
             navigation.navigate('SignInPage');      
           }catch(err){
             setError(err.message);

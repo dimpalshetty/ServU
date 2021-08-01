@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -6,56 +6,66 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const width = Dimensions.get('window').width
 
-class Select extends Component {
-    state = {
-        selected: null,
-        value: '1'
-    };
+const Select =()=>{
+    const [backgroundColor,setBackgroundColor]=useState("#6e6be8")
+    const [backgroundColor2,setBackgroundColor2]=useState("grey")
+    const [textColor,setTextColor]=useState("white")
+    const [textColor2,setTextColor2]=useState("black")
+    const [pressed,setPressed]=useState(false)
 
-    _handleClick(flag, button) {
-        if (flag == 1) {
-            this.setState({ selected: true });
+    const changeColor=()=>{
+        if (!pressed){
+            setBackgroundColor2("grey")
+            setBackgroundColor("#6e6be8")
+            setTextColor2("black")
+            setTextColor("white")
+
         }
-        this.setState({ value: button })
-    }
 
-    render() {
+    }
+    const changeColor2=()=>{
+        if (!pressed){
+            setBackgroundColor("grey")
+            setBackgroundColor2("#6e6be8")
+            setTextColor("black")
+            setTextColor2("white")
+
+        }
+       
+    }
+    
         return (
             <View style={styles.navBar}>
                 <TouchableOpacity style={{
-                    backgroundColor: (this.state.value === '1' ? '#6e6be8' : 'white'),
+                    backgroundColor:backgroundColor,
                     borderRadius: 15,
-                    borderColor: (this.state.value === '1' ? 'grey' : 'white'),
-                    borderWidth: 1,
                     height: 60,
                     width: width / 2.8,
                     marginRight: 10,
                     alignItems: "center",
                     justifyContent: "center",
                 }}
-                    onPress={() => this._handleClick('any flag', '1')}
+                    onPress={() => changeColor()}
                 >
                     <View >
-                        <Text style={{ color: (this.state.value === '2' ? 'black' : 'white'), fontSize: 15 }}>
+                        <Text style={{ color: textColor, fontSize: 15 }}>
                             User
                         </Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={{
-                    backgroundColor: (this.state.value === '2' ? '#6e6be8' : 'white'),
+                    backgroundColor: backgroundColor2,
                     borderRadius: 15,
-                    borderColor: (this.state.value === '2' ? 'grey' : 'white'),
-                    borderWidth: 1,
                     height: 60,
                     alignItems: "center",
                     width: width / 2.8,
 
                     justifyContent: "center",
                 }}
-                    onPress={() => this._handleClick('any flag', '2')}
+                onPress={() => changeColor2()}
                 >
                     <View >
-                        <Text style={{ color: (this.state.value === '2' ? 'white' : 'black'), fontSize: 15 }}>
+                        <Text style={{ color: textColor2, fontSize: 15 }}>
                             Service Provider
                         </Text>
                     </View>
@@ -63,7 +73,7 @@ class Select extends Component {
 
             </View>
         );
-    }
+ 
 }
 
 
