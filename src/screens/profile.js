@@ -24,7 +24,7 @@ const height = Dimensions.get('window').height
 
 
 const ScreenContainer = ({ children }) => (
-    <View style={styles.container}>{children}</View>
+    <View >{children}</View>
 );
 
 export const Profile = ({ navigation }) => {
@@ -81,7 +81,7 @@ export const Profile = ({ navigation }) => {
                 </View>
 
                 <View style={{ flexDirection: 'column', width: width, top: -80, justifyContent: 'center', }}>
-                    <View style={styles.input}>
+                    <View>
                         <Input
 
                             label="Name"
@@ -148,6 +148,9 @@ export const Profile = ({ navigation }) => {
                     </View>
                     <View style={{ alignItems: 'center', top: 20 }}>
                         <SignUpButton text='SAVE' color='#FFFF' bgcolor='#583ef2' width={width / 1.1} />
+                    </View>
+                    <View style={{ alignItems: 'center', top: 20 }}>
+                        <SignUpButton text='LOGOUT' color='#FFFF' bgcolor='#faa0a0' width={width / 1.1} onPress={()=>navigation.replace("SignInPage")} />
                     </View>
                 </View>
 
