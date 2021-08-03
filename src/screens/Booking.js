@@ -19,7 +19,7 @@ const height = Dimensions.get('window').height
 
 
 const ScreenContainer = ({ children }) => (
-    <View style={styles.container}>{children}</View>
+    <View>{children}</View>
 );
 
 
@@ -36,7 +36,7 @@ export const Booking = ({ navigation}) => {
 
             <View style={{ flexDirection: 'column' }}>
 
-                <View style={styless.navbarr}>
+                <View>
 
 
 
