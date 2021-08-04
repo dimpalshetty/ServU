@@ -17,36 +17,47 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import "firebase/firestore";
 
+
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const ScreenContainer = ({ children }) => <View>{children}</View>;
+const useri = firebase.auth().currentUser;
+var uid = useri.uid
+var docRef = firebase.firestore().collection("serviceProvider").doc(uid);
 
 export const Profile = ({ navigation }) => {
   const [em, setem] = useState(" ");
   const [nm, setnm] = useState(" ");
   const [ph, setph] = useState(" ");
+  
+ 
 
-  useEffect(() => {
-    const user = firebase.auth().currentUser;
-    if (user !== null) {
-      const email = user.email;
-    
-      setem(email);
-     
+  
+
+  
+  
+  
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+        setem(doc.data().email)
+        setnm(doc.data().name)
+        setph(doc.data().phone)
+        
+    } else {
+        
+        console.log("No such document!");
     }
-  }, []);
-  useEffect(() => {
-    const user = firebase.auth().currentUser;
-    if (user !== null) {
-      
-      const name = user.name;
-     
-   
-      setnm(name);
-     
-    }
-  }, []);
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+
+ 
+
+ 
+
+  
+  
 
   return (
     <ScrollView>
@@ -102,8 +113,9 @@ export const Profile = ({ navigation }) => {
         >
           <View>
             <Input
-              value={nm}
+            
               label="Name"
+              value={nm}
               placeholder="Your name here"
               labelStyle={{ color: "#1F1F39", padding: 5 }}
               inputContainerStyle={{
@@ -116,8 +128,9 @@ export const Profile = ({ navigation }) => {
               }
             />
             <Input
-            value={ph}
+         
               label="Phone"
+              value={ph}
               labelStyle={{ color: "#1F1F39", paddingVertical: 5 }}
               placeholder="Your phone number here"
               inputContainerStyle={{
@@ -136,7 +149,7 @@ export const Profile = ({ navigation }) => {
               }
             />
             <Input
-              value={em}
+             value={em}
               label="Email"
               placeholder="Your Email here"
               labelStyle={{ color: "#1F1F39", paddingVertical: 5 }}
