@@ -9,7 +9,8 @@ import {
 
 } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
-
+import firebase from '../../firebase';
+import 'firebase/firestore';
 import DetailsCard from '../../src/components/DetailsCard';
 
 
@@ -46,10 +47,25 @@ const styles = StyleSheet.create({
     }
 
 });
-
+const user=firebase.auth().currentUser;
+if(user!==null){
+    var uid=user.uid
+    console.log(uid);
+}
+var docRef = firebase.firestore().collection("serviceProvider").doc(uid);
 
 export const SelectWorker = ({ navigation }) => {
-
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+            console.log("name:",doc.data().name)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}>
