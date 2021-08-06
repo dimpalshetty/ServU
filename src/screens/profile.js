@@ -22,9 +22,14 @@ const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const ScreenContainer = ({ children }) => <View>{children}</View>;
+
 const useri = firebase.auth().currentUser;
+if(useri!==null){
 var uid = useri.uid
+}
+
 var docRef = firebase.firestore().collection("serviceProvider").doc(uid);
+
 
 export const Profile = ({ navigation }) => {
   const [em, setem] = useState(" ");
