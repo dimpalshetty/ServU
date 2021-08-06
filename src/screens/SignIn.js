@@ -112,7 +112,7 @@ export const SignInPage = ({ navigation }) => {
                 await firebase.auth().signInWithEmailAndPassword(email.trim(), password);
                 db.collection("serviceProvider").where("email", "==", email).get()
                     .then(() => {
-                        navigation.navigate('SelectWorker');
+                        navigation.navigate('Servicescreen');
                     }
                     )
                     .catch(() => {
