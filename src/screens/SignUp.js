@@ -39,6 +39,9 @@ export const SignUpPage = ({ navigation }) => {
     }, []);
 
 
+    
+
+
     const signUp = async () => {
         if (userType == "users") {
 

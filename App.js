@@ -14,7 +14,9 @@ import { SignInPage } from './src/screens/SignIn';
 import { BookingDetails } from './src/screens/BookingDetails';
 import { Notifications } from './src/screens/Notifications';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 
 
@@ -80,6 +82,8 @@ function HomeStack() {
       <Tab.Screen name="Notifications" component={Notifications} />
 
       {/* <Tab.Screen name="Settings" component={Settings} /> */}
+      
     </Tab.Navigator>
+    
   );
 }
