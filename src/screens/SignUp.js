@@ -49,7 +49,7 @@ export const SignUpPage = ({ navigation }) => {
                 firebase.auth().createUserWithEmailAndPassword(email.trim(), password)
                     .then((result) => {
                         firebase.firestore().collection("users")
-                            .doc(firebase.auth().currentUser.uid)
+                            .doc( firebase.auth().currentUser)
                             .set({
                                 name,
                                 email,

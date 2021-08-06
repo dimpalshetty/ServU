@@ -1,4 +1,4 @@
-import React, { useCallback,useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
     Text,
     StyleSheet,
@@ -14,6 +14,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { Input } from 'react-native-elements';
 import Select from '../../src/components/select';
 import firebase from '../../firebase';
+import 'firebase/firestore';
+
 
 const width = Dimensions.get('window').width
 const height = Dimensions.get('window').height
@@ -70,9 +72,8 @@ const styles = StyleSheet.create({
     }
 
 });
-const ScreenContainer = ({ children }) => (
-    <View style={styles.container}>{children}</View>
-);
+
+
 
 export const SignInPage = ({ navigation }) => {
 
@@ -80,7 +81,7 @@ export const SignInPage = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [userType, setUserType] = useState('users');
-
+    const db = firebase.firestore();
     const callback = useCallback((type) => {
         console.log(type)
 
@@ -92,7 +93,16 @@ export const SignInPage = ({ navigation }) => {
         if (userType == "users") {
             try {
                 await firebase.auth().signInWithEmailAndPassword(email.trim(), password);
-                navigation.navigate('HomePage');
+                db.collection("users").where("email", "==", email).get()
+                .then(() => {
+                    navigation.navigate('HomePage');
+                }
+                )
+                .catch(() => {
+                    setError("Email doesn't exist.")
+
+                }
+                )
             } catch (err) {
                 setError(err.message);
             }
@@ -100,7 +110,16 @@ export const SignInPage = ({ navigation }) => {
         else if (userType == "serviceProvider") {
             try {
                 await firebase.auth().signInWithEmailAndPassword(email.trim(), password);
-                navigation.navigate('SelectWorker');
+                db.collection("serviceProvider").where("email", "==", email).get()
+                    .then(() => {
+                        navigation.navigate('SelectWorker');
+                    }
+                    )
+                    .catch(() => {
+                        setError("Email doesn't exist.")
+
+                    }
+                    )
             } catch (err) {
                 setError(err.message);
             }
@@ -108,74 +127,72 @@ export const SignInPage = ({ navigation }) => {
     }
 
     return (
-        <ScreenContainer>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-            >
-                <View style={styles.Header}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+        >
+            <View style={styles.Header}>
 
-                    <Image
-                        style={{
-                            width: width / 3,
-                            height: height / 6,
-                            resizeMode: 'contain'
-                        }}
-                        source={house} />
-                    <Text style={styles.SignIn}>Log In</Text>
-                    <Text style={styles.Info}>Please enter the details to sign in to your account.</Text>
+                <Image
+                    style={{
+                        width: width / 3,
+                        height: height / 6,
+                        resizeMode: 'contain'
+                    }}
+                    source={house} />
+                <Text style={styles.SignIn}>Log In</Text>
+                <Text style={styles.Info}>Please enter the details to sign in to your account.</Text>
 
-                </View>
-                <View style={styles.body}>
-                    <Select
-                        parentCallback={callback}
+            </View>
+            <View style={styles.body}>
+                <Select
+                    parentCallback={callback}
 
-                    />
-                    <View style={styles.input}>
+                />
+                <View style={styles.input}>
 
-                        <Input
-                            value={email}
-                            onChangeText={setEmail}
-                            label="Email"
-                            labelStyle={{ 'color': '#1F1F39' }}
-                            placeholder="Your email number here"
-                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2' }}
-                            textContentType="emailAddress"
+                    <Input
+                        value={email}
+                        onChangeText={setEmail}
+                        label="Email"
+                        labelStyle={{ 'color': '#1F1F39' }}
+                        placeholder="Your email number here"
+                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2' }}
+                        textContentType="emailAddress"
 
-                            leftIcon={
-                                <Icon name="mail-outline"
-                                    size={18}
-                                    color={'#6e6be8'}
+                        leftIcon={
+                            <Icon name="mail-outline"
+                                size={18}
+                                color={'#6e6be8'}
 
-                                ></Icon>
-                            }
-                        />
-
-                        <Input
-                            value={password}
-                            onChangeText={setPassword}
-                            label="Password"
-                            labelStyle={{ 'color': '#1F1F39', }}
-                            inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', }}
-
-                            placeholder="Your password here"
-                            secureTextEntry={true}
-                            leftIcon={
-                                <Icon name="lock-closed-outline"
-                                    size={18}
-                                    color={'#6e6be8'}
-
-                                ></Icon>
-                            }
-                        />
-                        {
-                            error ? <Text style={{ color: 'red' }}>{error}</Text> : null
+                            ></Icon>
                         }
+                    />
+
+                    <Input
+                        value={password}
+                        onChangeText={setPassword}
+                        label="Password"
+                        labelStyle={{ 'color': '#1F1F39', }}
+                        inputContainerStyle={{ 'borderBottomColor': '#BBBBD2', }}
+
+                        placeholder="Your password here"
+                        secureTextEntry={true}
+                        leftIcon={
+                            <Icon name="lock-closed-outline"
+                                size={18}
+                                color={'#6e6be8'}
+
+                            ></Icon>
+                        }
+                    />
+                    {
+                        error ? <Text style={{ color: 'red' }}>{error}</Text> : null
+                    }
 
 
-                    </View>
-                    <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width / 1.35} onPress={() => signIn()} />
                 </View>
-            </ScrollView>
-        </ScreenContainer>
+                <SignUpButton text='LOGIN' color='#FFFF' bgcolor='#583ef2' width={width / 1.35} onPress={() => signIn()} />
+            </View>
+        </ScrollView>
     );
 };
