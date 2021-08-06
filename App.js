@@ -8,6 +8,7 @@ import { HomePage } from './src/screens/HomePage';
 import { Profile } from './src/screens/profile';
 import { SignUpPage } from './src/screens/SignUp';
 import { Booking } from './src/screens/Booking';
+import { Service } from './src/screens/Servicescreen';
 import { SelectWorker } from './src/screens/SelectWorker';
 import { WorkerProfile } from './src/screens/WorkerProfile';
 import { SignInPage } from './src/screens/SignIn';
@@ -24,10 +25,13 @@ const AuthStack = createStackNavigator();
 export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
+    <AuthStack.Screen name="Servicescreen" component= { Service } options={{ headerShown: false }} />
       
       <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="SignInPage" component={SignInPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
+      
+      
       <AuthStack.Screen name="WorkerProfile" component={WorkerProfile} options={{ headerShown: false }} />
       <AuthStack.Screen name="SignUpPage" component={SignUpPage} options={{ headerShown: false }} />
       <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
