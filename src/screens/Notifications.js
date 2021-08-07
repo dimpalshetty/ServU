@@ -18,6 +18,7 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const Notifications = () => {
+
   return (
     <View
       style={{ backgroundColor: "white", flexDirection: "column", flex: 1 }}
