@@ -23,15 +23,16 @@ if (user !== null) {
 }
 var docRef = firebase.firestore().collection("serviceProvider");
 docRef.get().then((querySnapshot) => {
-  documents = querySnapshot.docs.map((doc) => doc.data().name);
-  console.log(documents);
+  documents = querySnapshot.docs.map((doc) => doc.data());
 });
-export const SelectWorker = ({ navigation }) => {
+export const SelectWorker = ({ route, navigation }) => {
+  const { work } = route.params;
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.navbarr}>
         <View style={styles.navTitle}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon
               name="chevron-back-circle-outline"
               size="small"
@@ -57,17 +58,18 @@ export const SelectWorker = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      
 
-      {documents.map((name,key) => {
+      {documents.map((users, key) => {
         return (
           <DetailsCard
             key={key}
-            name={name}
+            name={users.name}
             experience="5"
             image={require("../../assets/images/profile.jpg")}
             price="200"
             unit="Day"
+            work={work}
+            email={users.email}
           />
         );
       })}
