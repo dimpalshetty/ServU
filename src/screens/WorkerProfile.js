@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Text,
   StyleSheet,
@@ -13,6 +13,7 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import ProfileCard from "../components/ProfileCard";
 import Specialization from "../components/Specialization";
 import Stars from 'react-native-stars';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -20,6 +21,30 @@ const height = Dimensions.get("window").height;
 
 export const WorkerProfile = ({ route, navigation }) => {
   const { name, experience } = route.params;
+
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
 
   return (
     <View
@@ -98,6 +123,14 @@ export const WorkerProfile = ({ route, navigation }) => {
 
           />
         </View>
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
       </ScrollView>
     </View>
   );

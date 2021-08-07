@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Text,
     StyleSheet,
@@ -24,7 +24,28 @@ const height = Dimensions.get('window').height
 export const Servicehome = ({ navigation }) => {
     
 
-
+    // const [date, setDate] = useState(new Date(1598051730000));
+    // const [mode, setMode] = useState('date');
+    // const [show, setShow] = useState(false);
+    // const onChange = (event, selectedDate) => {
+    //     const currentDate = selectedDate || date;
+    //     setShow(Platform.OS === 'ios');
+    //     setDate(currentDate);
+    //   };
+    
+    //   const showMode = (currentMode) => {
+    //     setShow(true);
+    //     setMode(currentMode);
+    //   };
+    
+    //   const showDatepicker = () => {
+    //     showMode('date');
+    //   };
+    
+    //   const showTimepicker = () => {
+    //     showMode('time');
+    //   };
+    
     
 
 
@@ -65,6 +86,8 @@ export const Servicehome = ({ navigation }) => {
 
 
                     <Box image ={require('../../assets/images/profile.jpg')} text='Jake Peralta' text1='Cleaning' id='#123455' /> 
+                    
+                    
                     </View>
     );
 };
