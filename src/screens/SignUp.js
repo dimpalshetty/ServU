@@ -86,7 +86,7 @@ export const SignUpPage = ({ navigation }) => {
         }
  
     }
-  };
+
 
   return (
     <ScreenContainer>

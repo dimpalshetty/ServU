@@ -17,6 +17,8 @@ import Specialization from "../components/Specialization";
 import Stars from "react-native-stars";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import BookNowButton from "../../src/components/button";
+import firebase from "../../firebase";
+import "firebase/firestore";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -28,6 +30,29 @@ export const WorkerProfile = ({ route, navigation }) => {
   const [mode, setMode] = useState("date");
   const [show1, setShow1] = useState(false);
   const [show, setShow] = useState(false);
+
+  firebase
+    .auth()
+    .getUserByEmail(email)
+    .then(function (userRecord) {
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log("Successfully fetched user data:", userRecord);
+    })
+    .catch(function (error) {
+      console.log("Error fetching user data:", error);
+    });
+
+  console.log(wuid);
+
+  const createBooking = async () => {
+    await firebase.firestore().collection("bookings").add({
+      date1,
+      work,
+      email,
+    });
+  };
+
+  console.log("Added document with ID: ", res.id);
 
   const onChange1 = (event, selectedDate) => {
     const currentDate = selectedDate || date;

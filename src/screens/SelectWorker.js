@@ -19,7 +19,6 @@ let documents;
 const user = firebase.auth().currentUser;
 if (user !== null) {
   var uid = user.uid;
-  console.log(uid);
 }
 var docRef = firebase.firestore().collection("serviceProvider");
 docRef.get().then((querySnapshot) => {
