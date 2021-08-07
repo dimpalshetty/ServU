@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   Text,
   StyleSheet,
@@ -6,45 +6,52 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  Button,
+  TextInput,
 } from "react-native";
 import { Header } from "react-native-elements";
 import Icon from "react-native-vector-icons/Ionicons";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import ProfileCard from "../components/ProfileCard";
 import Specialization from "../components/Specialization";
-import Stars from 'react-native-stars';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import Stars from "react-native-stars";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import BookNowButton from "../../src/components/button";
+
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-
 export const WorkerProfile = ({ route, navigation }) => {
-  const { name, experience } = route.params;
-
-  const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
+  const { name, experience, work } = route.params;
+  const today = new Date();
+  const [date1, setDate1] = useState(new Date(today));
+  const [mode, setMode] = useState("date");
+  const [show1, setShow1] = useState(false);
   const [show, setShow] = useState(false);
 
-  const onChange = (event, selectedDate) => {
+  const onChange1 = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
+    setShow1(Platform.OS === "ios");
+    setDate1(currentDate);
   };
 
   const showMode = (currentMode) => {
     setShow(true);
     setMode(currentMode);
   };
+  const showMode1 = (currentMode) => {
+    setShow1(true);
+    setMode(currentMode);
+  };
 
-  const showDatepicker = () => {
-    showMode('date');
+  const showDatepicker1 = () => {
+    showMode1("date");
   };
 
   const showTimepicker = () => {
-    showMode('time');
+    showMode("time");
   };
-
 
   return (
     <View
@@ -77,82 +84,137 @@ export const WorkerProfile = ({ route, navigation }) => {
           },
         }}
       />
-      <ScrollView showsVerticalScrollIndicator={false} style={{ paddingHorizontal: 13 }}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ paddingHorizontal: 13 }}
+      >
         <ProfileCard name={name} experience={experience} location="Mangalore" />
         <Text style={styles.subTitle}>Specialized in:</Text>
         <ScrollView
           horizontal={true}
-          style={{ flexDirection: 'row' }}
+          style={{ flexDirection: "row" }}
           showsHorizontalScrollIndicator={false}
         >
           <Specialization
-            title='Maid'
-            bgcolor='#78789D'
-            image={require('../../assets/Icons/cleaning.png')} />
+            title="Maid"
+            bgcolor="#78789D"
+            image={require("../../assets/Icons/cleaning.png")}
+          />
           <Specialization
-            title='Groceries'
-            bgcolor='#F7658B'
-            image={require('../../assets/Icons/cleaning.png')} />
+            title="Groceries"
+            bgcolor="#F7658B"
+            image={require("../../assets/Icons/cleaning.png")}
+          />
           <Specialization
-            title='Maid'
-            bgcolor='#78789D'
-            image={require('../../assets/Icons/cleaning.png')} />
+            title="Maid"
+            bgcolor="#78789D"
+            image={require("../../assets/Icons/cleaning.png")}
+          />
           <Specialization
-            title='Maid'
-            bgcolor='#78789D'
-            image={require('../../assets/Icons/cleaning.png')} />
+            title="Maid"
+            bgcolor="#78789D"
+            image={require("../../assets/Icons/cleaning.png")}
+          />
           <Specialization
-            title='Maid'
-            bgcolor='#78789D'
-            image={require('../../assets/Icons/cleaning.png')} />
-
+            title="Maid"
+            bgcolor="#78789D"
+            image={require("../../assets/Icons/cleaning.png")}
+          />
         </ScrollView>
         <Text style={styles.subTitle}>Rating:</Text>
 
-        <View style={{ marginVertical: 10 ,justifyContent:'flex-start',alignItems:'flex-start'}}>
-
+        <View
+          style={{
+            marginVertical: 10,
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+          }}
+        >
           <Stars
             default={3.5}
             count={5}
             half={true}
             starSize={200}
-            fullStar={<Icon name={'star'} style={[styles.myStarStyle]} />}
-            emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]} />}
-            halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}
-            />}
-
+            fullStar={<Icon name={"star"} style={[styles.myStarStyle]} />}
+            emptyStar={
+              <Icon
+                name={"star-outline"}
+                style={[styles.myStarStyle, styles.myEmptyStarStyle]}
+              />
+            }
+            halfStar={<Icon name={"star-half"} style={[styles.myStarStyle]} />}
           />
         </View>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
+        <View>
+          <Text style={styles.subTitle}>Schedule:</Text>
+
+          <TouchableOpacity
+            onPress={showDatepicker1}
+            style={{
+              width: width / 2,
+              backgroundColor: "#B8B8D2",
+              alignItems: "center",
+              padding: 20,
+              borderBottomRightRadius: 25,
+              borderBottomLeftRadius: 25,
+              borderTopRightRadius: 25,
+              flexDirection:"row",
+              justifyContent:"space-around",
+            }}
+          >
+            <Icon
+              name="calendar-outline"
+              size="small"
+              style={{
+                color: "white",
+                fontSize: RFPercentage(4),
+
+              }}/>
+            <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>
+              {date1.toISOString().slice(0, 10)}
+            </Text>
+          </TouchableOpacity>
+
+          {show1 && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              timeZoneOffsetInMinutes={0}
+              value={date1}
+              mode={mode}
+              is24Hour={true}
+              display="default"
+              onChange={onChange1}
+            />
+          )}
+        </View>
+        <View style={{widthL:width,alignItems:"center",marginVertical:20}}>
+        <BookNowButton
+          text="BOOK NOW"
+          color="#FFFF"
+          bgcolor="#583ef2"
+          width={width / 1.35}
+          
         />
+        </View>
       </ScrollView>
     </View>
   );
 };
 const styles = StyleSheet.create({
   subTitle: {
-    color: '#46369F',
+    color: "#46369F",
     fontSize: 23,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingTop: 20,
-    paddingBottom: 10
-
+    paddingBottom: 10,
   },
   myStarStyle: {
     fontSize: 25,
-    color: '#ffb457',
-    backgroundColor: 'transparent',
-    textShadowColor: 'black',
-},
-myEmptyStarStyle: {
-    color: 'grey',
-},
-
-
-})
+    color: "#ffb457",
+    backgroundColor: "transparent",
+    textShadowColor: "black",
+  },
+  myEmptyStarStyle: {
+    color: "grey",
+  },
+});
