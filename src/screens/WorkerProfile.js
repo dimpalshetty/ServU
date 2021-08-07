@@ -18,12 +18,11 @@ import Stars from "react-native-stars";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import BookNowButton from "../../src/components/button";
 
-
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 export const WorkerProfile = ({ route, navigation }) => {
-  const { name, experience, work } = route.params;
+  const { name, experience, work, email } = route.params;
   const today = new Date();
   const [date1, setDate1] = useState(new Date(today));
   const [mode, setMode] = useState("date");
@@ -158,8 +157,8 @@ export const WorkerProfile = ({ route, navigation }) => {
               borderBottomRightRadius: 25,
               borderBottomLeftRadius: 25,
               borderTopRightRadius: 25,
-              flexDirection:"row",
-              justifyContent:"space-around",
+              flexDirection: "row",
+              justifyContent: "space-around",
             }}
           >
             <Icon
@@ -168,8 +167,8 @@ export const WorkerProfile = ({ route, navigation }) => {
               style={{
                 color: "white",
                 fontSize: RFPercentage(4),
-
-              }}/>
+              }}
+            />
             <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>
               {date1.toISOString().slice(0, 10)}
             </Text>
@@ -187,14 +186,15 @@ export const WorkerProfile = ({ route, navigation }) => {
             />
           )}
         </View>
-        <View style={{widthL:width,alignItems:"center",marginVertical:20}}>
-        <BookNowButton
-          text="BOOK NOW"
-          color="#FFFF"
-          bgcolor="#583ef2"
-          width={width / 1.35}
-          
-        />
+        <View
+          style={{ widthL: width, alignItems: "center", marginVertical: 20 }}
+        >
+          <BookNowButton
+            text="BOOK NOW"
+            color="#FFFF"
+            bgcolor="#583ef2"
+            width={width / 1.35}
+          />
         </View>
       </ScrollView>
     </View>
