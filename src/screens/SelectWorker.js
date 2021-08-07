@@ -12,6 +12,7 @@ import firebase from "../../firebase";
 import "firebase/firestore";
 import DetailsCard from "../../src/components/DetailsCard";
 
+
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 let documents;
@@ -26,12 +27,14 @@ docRef.get().then((querySnapshot) => {
   documents = querySnapshot.docs.map((doc) => doc.data().name);
   console.log(documents);
 });
-export const SelectWorker = ({ navigation }) => {
+export const SelectWorker = ({ route, navigation }) => {
+  const { work } = route.params;
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.navbarr}>
         <View style={styles.navTitle}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Icon
               name="chevron-back-circle-outline"
               size="small"
@@ -57,9 +60,8 @@ export const SelectWorker = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </View>
-      
 
-      {documents.map((name,key) => {
+      {documents.map((name, key) => {
         return (
           <DetailsCard
             key={key}
@@ -68,9 +70,11 @@ export const SelectWorker = ({ navigation }) => {
             image={require("../../assets/images/profile.jpg")}
             price="200"
             unit="Day"
+            work={work}
           />
         );
       })}
+              
     </ScrollView>
   );
 };
