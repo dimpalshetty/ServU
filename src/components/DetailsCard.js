@@ -14,7 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-const DetailsCard = ({ name, experience, image, price, unit }) => {
+const DetailsCard = ({ name, experience, image, price, unit ,email}) => {
   const navigation = useNavigation();
 
   return (
@@ -23,6 +23,7 @@ const DetailsCard = ({ name, experience, image, price, unit }) => {
         navigation.navigate("WorkerProfile", {
           name: name,
           experience: experience,
+          email:email,
         })
       }
     >
