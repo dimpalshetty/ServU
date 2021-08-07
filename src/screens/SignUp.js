@@ -22,66 +22,71 @@ const ScreenContainer = ({ children }) => (
 );
 
 export const SignUpPage = ({ navigation }) => {
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [userType, setUserType] = useState("users");
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [userType, setUserType] = useState('users');
 
-  const callback = useCallback((type) => {
-    console.log(type);
+    const callback = useCallback((type) => {
+        console.log(type)
 
-    setUserType(type);
-  }, []);
+        setUserType(type);
+    }, []);
 
-  const signUp = async () => {
-    if (userType == "users") {
-      try {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email.trim(), password)
-          .then((result) => {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(firebase.auth().currentUser)
-              .set({
-                name,
-                email,
-                phone,
-                userType,
-              });
-            console.log(result);
-          });
-        navigation.navigate("SignInPage");
-      } catch (err) {
-        setError(err.message);
-      }
-    } else if (userType == "serviceProvider") {
-      try {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email.trim(), password)
-          .then((result) => {
-            firebase
-              .firestore()
-              .collection("serviceProvider")
-              .doc(firebase.auth().currentUser.uid)
-              .set({
-                name,
-                email,
-                phone,
-                userType,
-              });
-            console.log(result);
-          });
-        navigation.navigate("SignInPage");
-      } catch (err) {
-        setError(err.message);
-      }
+
+    
+
+
+    const signUp = async () => {
+        if (userType == "users") {
+
+            try {
+                firebase.auth().createUserWithEmailAndPassword(email.trim(), password)
+                    .then((result) => {
+                        firebase.firestore().collection("users")
+                            .doc( firebase.auth().currentUser)
+                            .set({
+                                name,
+                                email,
+                                phone,
+                                userType
+                            })
+                        console.log(result)
+
+                    }
+                    )
+                navigation.navigate('SignInPage');
+            } catch (err) {
+                setError(err.message);
+            }
+        }
+        else if (userType == "serviceProvider") {
+
+            try {
+                firebase.auth().createUserWithEmailAndPassword(email.trim(), password)
+                    .then((result) => {
+                        firebase.firestore().collection("serviceProvider")
+                            .doc(firebase.auth().currentUser.uid)
+                            .set({
+                                name,
+                                email,
+                                phone,
+                                userType
+                            })
+                        console.log(result)
+
+                    }
+                    )
+                navigation.navigate('Signinform');
+            } catch (err) {
+                setError(err.message);
+            }
+        }
+ 
     }
-  };
+
 
   return (
     <ScreenContainer>

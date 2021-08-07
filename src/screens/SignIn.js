@@ -18,55 +18,6 @@ import "firebase/firestore";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  Header: {
-    top: 70,
-    alignContent: "center",
-    alignItems: "center",
-    marginBottom: 120,
-  },
-  SignIn: {
-    fontWeight: "bold",
-    fontSize: 30,
-    alignContent: "center",
-    alignItems: "center",
-    color: "#6E6BE8",
-  },
-
-  Info: {
-    fontSize: 18,
-    textAlign: "center",
-    alignItems: "center",
-    width: width / 1.35,
-    color: "#BBBBD2",
-    marginTop: 5,
-  },
-  body: {
-    flexDirection: "column",
-    borderColor: "#BBBBD2",
-    borderWidth: 2,
-    padding: 5,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1,
-    marginBottom: 50,
-  },
-
-  input: {
-    width: width / 1.25,
-    alignItems: "flex-start",
-    justifyContent: "center",
-    padding: 8,
-  },
-});
-
 export const SignInPage = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -178,3 +129,52 @@ export const SignInPage = ({ navigation }) => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  Header: {
+    top: 70,
+    alignContent: "center",
+    alignItems: "center",
+    marginBottom: 120,
+  },
+  SignIn: {
+    fontWeight: "bold",
+    fontSize: 30,
+    alignContent: "center",
+    alignItems: "center",
+    color: "#6E6BE8",
+  },
+
+  Info: {
+    fontSize: 18,
+    textAlign: "center",
+    alignItems: "center",
+    width: width / 1.35,
+    color: "#BBBBD2",
+    marginTop: 5,
+  },
+  body: {
+    flexDirection: "column",
+    borderColor: "#BBBBD2",
+    borderWidth: 2,
+    padding: 5,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    marginBottom: 50,
+  },
+
+  input: {
+    width: width / 1.25,
+    alignItems: "flex-start",
+    justifyContent: "center",
+    padding: 8,
+  },
+});
