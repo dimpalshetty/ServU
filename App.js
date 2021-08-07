@@ -15,6 +15,7 @@ import { SignInPage } from './src/screens/SignIn';
 import { BookingDetails } from './src/screens/BookingDetails';
 import { Notifications } from './src/screens/Notifications';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import  {Signinform } from  './src/screens/signinform';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -26,6 +27,8 @@ export default () => (
   <NavigationContainer>
     <AuthStack.Navigator>
     <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
+    <AuthStack.Screen name="Signinform" component={Signinform} options={{ headerShown: false }} />
+    
     <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
     <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
     <AuthStack.Screen name="WorkerProfile" component={WorkerProfile} options={{ headerShown: false }} />

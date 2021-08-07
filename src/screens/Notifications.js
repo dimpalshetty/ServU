@@ -36,7 +36,7 @@ export const Notifications = () => {
 
         <View style={{ backgroundColor: 'white', flexDirection: 'column', flex: 1 }}>
 
-<CustomHeader title="Notifications"/>
+<CustomHeader title="Notifications" />
 
             
 

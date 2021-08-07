@@ -82,7 +82,7 @@ export const SignUpPage = ({ navigation }) => {
 
                     }
                     )
-                navigation.navigate('SignInPage');
+                navigation.navigate('Signinform');
             } catch (err) {
                 setError(err.message);
             }
