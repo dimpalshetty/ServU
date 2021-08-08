@@ -36,8 +36,8 @@ export const CustomHeader = ({ id, title}) => {
         <View>
 
             <Header
-                containerStyle={{ backgroundColor: 'white', }}
-                leftComponent={<TouchableOpacity onPress={() => navigation.goBack()}><Icon name="chevron-back-circle-outline" size="small" style={{ color: '#46369F', fontSize: RFPercentage(6), }} /></TouchableOpacity>}
+                containerStyle={{ backgroundColor: '#6E6BE8', }}
+                leftComponent={<TouchableOpacity onPress={() => navigation.goBack()}><Icon name="chevron-back-circle-outline" size="small" style={{ color: '#fff', fontSize: RFPercentage(6), }} /></TouchableOpacity>}
                 centerComponent={<Text style={styless.booking}>{title}{id}</Text>} />
 
 
@@ -74,12 +74,12 @@ const styless = StyleSheet.create({
     },
 
     booking: {
-        color: '#46369F',
+        color: '#fff',
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        fontWeight: '800',
-        fontSize: 18,
+        fontWeight: '400',
+        fontSize: 30,
         marginTop: 10,
 
     },
@@ -87,4 +87,4 @@ const styless = StyleSheet.create({
 });
 
 
-export default CustomHeader
+export default CustomHeader;
