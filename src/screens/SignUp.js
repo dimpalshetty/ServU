@@ -45,7 +45,7 @@ export const SignUpPage = ({ navigation }) => {
             firebase
               .firestore()
               .collection("users")
-              .doc(firebase.auth().currentUser)
+              .doc(firebase.auth().currentUser.uid)
               .set({
                 name,
                 email,
