@@ -23,7 +23,7 @@ import { Header } from "react-native-elements";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
-
+var id="123"
 
 
 export const Success = ({ navigation }) => {

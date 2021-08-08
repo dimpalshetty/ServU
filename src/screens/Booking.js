@@ -4,6 +4,7 @@ import { Text, StyleSheet, View, Dimensions, ScrollView } from "react-native";
 import Bookbox from "../../src/components/Bookbox";
 import Icon from "react-native-vector-icons/Ionicons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Head from '../../src/components/header';
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -18,7 +19,8 @@ export const Booking = ({ navigation }) => {
       >
         <View style={{ flexDirection: "column" }}>
           <View>
-            <TouchableOpacity
+       <Head title="Bookings"></Head>
+            {/* <TouchableOpacity
               style={{ padding: 22, paddingTop: 20, flex: 2 / 3 }}
               onPress={() => navigation.goBack()}
             >
@@ -30,20 +32,11 @@ export const Booking = ({ navigation }) => {
                   fontSize: 50,
                 }}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
-            <View
-              style={{
-                alignContent: "center",
-                alignItems: "center",
-                flex: 2 / 3,
-                paddingLeft: width / 15,
-                paddingTop: 25,
-              }}
-            >
-              <Text style={{ color: "white", fontSize: 30 }}>Bookings</Text>
-            </View>
+            
           </View>
+          
 
           <View style={{ flexDirection: "column" }}>
             <Bookbox
