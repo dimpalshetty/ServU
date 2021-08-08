@@ -66,7 +66,7 @@ export const SignUpPage = ({ navigation }) => {
           .then((result) => {
             firebase
               .firestore()
-              .collection("users")
+              .collection("serviceProvider")
               .doc(firebase.auth().currentUser.uid)
               .set({
                 name,
@@ -74,7 +74,6 @@ export const SignUpPage = ({ navigation }) => {
                 phone,
                 userType,
               });
-            console.log(result);
           });
         navigation.navigate("Signinform");
       } catch (err) {

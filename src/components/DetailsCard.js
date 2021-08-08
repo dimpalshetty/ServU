@@ -23,7 +23,7 @@ const DetailsCard = ({ name, experience, image, price, unit ,email}) => {
         navigation.navigate("WorkerProfile", {
           name: name,
           experience: experience,
-          email:email,
+          wEmail:email,
         })
       }
     >
