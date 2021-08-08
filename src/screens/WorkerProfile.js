@@ -219,6 +219,9 @@ export const WorkerProfile = ({ route, navigation }) => {
             color="#FFFF"
             bgcolor="#583ef2"
             width={width / 1.35}
+            onPress={() =>
+      navigation.navigate("Success")
+    }
           />
         </View>
       </ScrollView>

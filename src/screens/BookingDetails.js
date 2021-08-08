@@ -65,8 +65,8 @@ export const BookingDetails = ({ route }) => {
                         <Text style={{ color: 'gray' }}>Monday-22 March</Text>
                         <Text style={{ color: 'gray' }}>12:00pm</Text></View>
 
-                    <View style={{ flexDirection: 'column', paddingTop: 7, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Note</Text>
-                        <Text style={{ color: 'gray' }}>No note added</Text>
+                    <View style={{ flexDirection: 'column', paddingTop: 7, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Worker Phone Number</Text>
+                        <Text style={{ color: 'gray' }}>1234567890</Text>
                     </View>
 
                     <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Domestic Worker</Text>
@@ -83,8 +83,8 @@ export const BookingDetails = ({ route }) => {
                     <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Cost</Text>
                         <Text style={{ color: 'gray' }}>Rs 4000</Text>
                     </View>
-                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>Method Of Payement</Text>
-                        <Text style={{ color: 'gray' }}>Credit Card</Text>
+                    <View style={{ flexDirection: 'column', paddingTop: 6, paddingLeft: 3 }}><Text style={{ fontSize: 18, fontWeight: "600" }}>User Phone Number</Text>
+                        <Text style={{ color: 'gray' }}>123456889</Text>
                     </View>
 
 
