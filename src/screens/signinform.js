@@ -49,7 +49,7 @@ const fetch=async()=>{if(firebase.auth().currentUser.uid!==null)
               },{merge:true});
             console.log(service)
           }
-        navigation.navigate("Booking");}
+        navigation.navigate("Servicescreen");}
       
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

@@ -57,7 +57,7 @@ export const SignInPage = ({ navigation }) => {
           .where("email", "==", email)
           .get()
           .then(() => {
-            navigation.navigate("Booking");
+            navigation.navigate("Servicescreen");
           })
           .catch(() => {
             setError("Email doesn't exist.");
