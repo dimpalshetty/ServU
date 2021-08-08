@@ -39,7 +39,7 @@ const fetch=async()=>{if(firebase.auth().currentUser.uid!==null)
   {
             firebase
               .firestore()
-              .collection("users")
+              .collection("serviceProvider")
               .doc(firebase.auth().currentUser.uid)
               .set({
                 service,

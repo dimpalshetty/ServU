@@ -17,52 +17,37 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import "firebase/firestore";
 
-
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 const ScreenContainer = ({ children }) => <View>{children}</View>;
 
 const useri = firebase.auth().currentUser;
-if(useri!==null){
-var uid = useri.uid
+if (useri !== null) {
+  var uid = useri.uid;
 }
 
 var docRef = firebase.firestore().collection("serviceProvider").doc(uid);
-
 
 export const Profile = ({ navigation }) => {
   const [em, setem] = useState(" ");
   const [nm, setnm] = useState(" ");
   const [ph, setph] = useState(" ");
-  
- 
 
-  
-
-  
-  
-  
-  docRef.get().then((doc) => {
-    if (doc.exists) {
-        setem(doc.data().email)
-        setnm(doc.data().name)
-        setph(doc.data().phone)
-        
-    } else {
-        
+  docRef
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setem(doc.data().email);
+        setnm(doc.data().name);
+        setph(doc.data().phone);
+      } else {
         console.log("No such document!");
-    }
-}).catch((error) => {
-    console.log("Error getting document:", error);
-});
-
- 
-
- 
-
-  
-  
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
 
   return (
     <ScrollView>
@@ -118,7 +103,6 @@ export const Profile = ({ navigation }) => {
         >
           <View>
             <Input
-            
               label="Name"
               value={nm}
               placeholder="Your name here"
@@ -133,7 +117,6 @@ export const Profile = ({ navigation }) => {
               }
             />
             <Input
-         
               label="Phone"
               value={ph}
               labelStyle={{ color: "#1F1F39", paddingVertical: 5 }}
@@ -154,7 +137,7 @@ export const Profile = ({ navigation }) => {
               }
             />
             <Input
-             value={em}
+              value={em}
               label="Email"
               placeholder="Your Email here"
               labelStyle={{ color: "#1F1F39", paddingVertical: 5 }}
