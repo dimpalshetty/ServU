@@ -23,26 +23,27 @@ import "firebase/firestore";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
+
 export const WorkerProfile = ({ route, navigation }) => {
-  const { name, experience, work, email } = route.params;
+  const { name, experience, work, wEmail } = route.params;
   const today = new Date();
   const [date1, setDate1] = useState(new Date(today));
   const [mode, setMode] = useState("date");
   const [show1, setShow1] = useState(false);
   const [show, setShow] = useState(false);
 
-  firebase
-    .auth()
-    .getUserByEmail(email)
-    .then(function (userRecord) {
-      // See the UserRecord reference doc for the contents of userRecord.
-      console.log("Successfully fetched user data:", userRecord);
-    })
-    .catch(function (error) {
-      console.log("Error fetching user data:", error);
-    });
+  firebase.firestore().collection('serviceProvider').where("email","==",wEmail)
+  .get()
+  .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data().name);
+      });
+  })
+  .catch((error) => {
+      console.log("Error getting documents: ", error);
+  });
 
-  console.log(wuid);
 
   const createBooking = async () => {
     await firebase.firestore().collection("bookings").add({
@@ -52,7 +53,6 @@ export const WorkerProfile = ({ route, navigation }) => {
     });
   };
 
-  console.log("Added document with ID: ", res.id);
 
   const onChange1 = (event, selectedDate) => {
     const currentDate = selectedDate || date;
