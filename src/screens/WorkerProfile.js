@@ -22,48 +22,85 @@ import "firebase/firestore";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
-
+const user = firebase.auth().currentUser;
+if (user !== null) {
+  var uid = user.uid;
+  console.log(uid);
+}
 
 export const WorkerProfile = ({ route, navigation }) => {
   const { name, experience, work, wEmail } = route.params;
   const today = new Date();
-  const [date1, setDate1] = useState(new Date(today));
+  const [date, setdate] = useState(new Date(today));
   const [mode, setMode] = useState("date");
   const [show1, setShow1] = useState(false);
-  const [show, setShow] = useState(false);
+  const [wName, setwName] = useState("");
+  const [wPhone, setwPhone] = useState("");
+  const [price, setPrice] = useState("");
+  const [location, setLocation] = useState("");
+  const [service, setService] = useState("");
+  const [uName, setuName] = useState("");
+  const [uPhone, setuPhone] = useState("");
+  const [uEmail, setuEmail] = useState("");
 
-  firebase.firestore().collection('serviceProvider').where("email","==",wEmail)
-  .get()
-  .then((querySnapshot) => {
+  firebase
+    .firestore()
+    .collection("users")
+    .doc(uid)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        setuName(doc.data().name);
+        setuPhone(doc.data().phone);
+        setuEmail(doc.data().email);
+        console.log("Document data:", uName);
+      } else {
+        console.log("No such user document!");
+      }
+    })
+    .catch((error) => {
+      console.log("Error getting document:", error);
+    });
+  firebase
+    .firestore()
+    .collection("serviceProvider")
+    .where("email", "==", wEmail)
+    .get()
+    .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data().name);
+        setwName(doc.data().name);
+        setwPhone(doc.data().phone);
+        setPrice(doc.data().price);
+        setLocation(doc.data().location);
+        setService(doc.data().service);
+        console.log(wPhone);
       });
-  })
-  .catch((error) => {
+    })
+    .catch((error) => {
       console.log("Error getting documents: ", error);
-  });
-
+    });
 
   const createBooking = async () => {
     await firebase.firestore().collection("bookings").add({
-      date1,
-      work,
-      email,
+      wName: wName,
+      wPhone: wPhone,
+      uName: uName,
+      uPhone: uPhone,
+      wEmail: wEmail,
+      uEmail: uEmail,
+      price: price,
+      location: location,
+      service: service,
+      date:date
     });
   };
-
 
   const onChange1 = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow1(Platform.OS === "ios");
-    setDate1(currentDate);
+    setdate(currentDate);
   };
 
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
   const showMode1 = (currentMode) => {
     setShow1(true);
     setMode(currentMode);
@@ -195,7 +232,7 @@ export const WorkerProfile = ({ route, navigation }) => {
               }}
             />
             <Text style={{ color: "white", fontSize: 18, fontWeight: "bold" }}>
-              {date1.toISOString().slice(0, 10)}
+              {date.toISOString().slice(0, 10)}
             </Text>
           </TouchableOpacity>
 
@@ -203,7 +240,7 @@ export const WorkerProfile = ({ route, navigation }) => {
             <DateTimePicker
               testID="dateTimePicker"
               timeZoneOffsetInMinutes={0}
-              value={date1}
+              value={date}
               mode={mode}
               is24Hour={true}
               display="default"
@@ -215,6 +252,7 @@ export const WorkerProfile = ({ route, navigation }) => {
           style={{ widthL: width, alignItems: "center", marginVertical: 20 }}
         >
           <BookNowButton
+            onPress={() => createBooking()}
             text="BOOK NOW"
             color="#FFFF"
             bgcolor="#583ef2"
