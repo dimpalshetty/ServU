@@ -25,7 +25,6 @@ const height = Dimensions.get("window").height;
 const user = firebase.auth().currentUser;
 if (user !== null) {
   var uid = user.uid;
-  console.log(uid);
 }
 
 export const WorkerProfile = ({ route, navigation }) => {
@@ -53,7 +52,6 @@ export const WorkerProfile = ({ route, navigation }) => {
         setuName(doc.data().name);
         setuPhone(doc.data().phone);
         setuEmail(doc.data().email);
-        console.log("Document data:", uName);
       } else {
         console.log("No such user document!");
       }
@@ -73,7 +71,6 @@ export const WorkerProfile = ({ route, navigation }) => {
         setPrice(doc.data().price);
         setLocation(doc.data().location);
         setService(doc.data().service);
-        console.log(wPhone);
       });
     })
     .catch((error) => {
@@ -81,20 +78,27 @@ export const WorkerProfile = ({ route, navigation }) => {
     });
 
   const createBooking = async () => {
-    await firebase.firestore().collection("bookings").add({
-      wName: wName,
-      wPhone: wPhone,
-      uName: uName,
-      uPhone: uPhone,
-      wEmail: wEmail,
-      uEmail: uEmail,
-      price: price,
-      location: location,
-      service: service,
-      date:date
-    }).then(()=>{
-      navigation.navigate("Success")
-    });
+    await firebase
+      .firestore()
+      .collection("bookings")
+      .add({
+        wName: wName,
+        wPhone: wPhone,
+        uName: uName,
+        uPhone: uPhone,
+        wEmail: wEmail,
+        uEmail: uEmail,
+        price: price,
+        location: location,
+        service: service,
+        date: date,
+      })
+      .then((docRef) => {
+        console.log("id=",docRef.id)
+
+        navigation.navigate("Success",{id:docRef.id});
+
+      });
   };
 
   const onChange1 = (event, selectedDate) => {
@@ -259,7 +263,6 @@ export const WorkerProfile = ({ route, navigation }) => {
             color="#FFFF"
             bgcolor="#583ef2"
             width={width / 1.35}
-           
           />
         </View>
       </ScrollView>

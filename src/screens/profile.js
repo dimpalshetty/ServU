@@ -27,7 +27,7 @@ if (useri !== null) {
   var uid = useri.uid;
 }
 
-var docRef = firebase.firestore().collection("serviceProvider").doc(uid);
+var docRef = firebase.firestore().collection("users").doc(uid);
 
 export const Profile = ({ navigation }) => {
   const [em, setem] = useState(" ");
