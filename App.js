@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import {Success } from './src/screens/success';
 import { LandingPage } from './src/screens/landing';
 import { HomePage } from './src/screens/HomePage';
 import { Profile } from './src/screens/profile';
@@ -28,6 +28,7 @@ export default () => (
     <AuthStack.Navigator>
     <AuthStack.Screen name="LandingPage" component={LandingPage} options={{ headerShown: false }} />
     <AuthStack.Screen name="Signinform" component={Signinform} options={{ headerShown: false }} />
+    <AuthStack.Screen name="Success" component={Success} options={{ headerShown: false }} />
     
     <AuthStack.Screen name="HomePage" component={HomeStack} options={{ headerShown: false }} />
     <AuthStack.Screen name="SelectWorker" component={SelectWorker} options={{ headerShown: false }} />
